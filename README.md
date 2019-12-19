@@ -3,6 +3,12 @@
  - Version 0.9 MVP Status
  - Code will need to be refactor in the future from class to hooks
 
+## TEST INSTRUCTIONS
+ - No need to build
+ - Clone then run:
+ - npm install
+ - npm start
+
 ## SECURITY TASK
   1. Firebase Database Rules
   2. Restric Google API only to renthomebase.com
