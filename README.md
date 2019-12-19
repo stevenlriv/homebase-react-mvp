@@ -1,14 +1,16 @@
 # Front-End Homebase
  - Highly under development
  - Version 0.9 MVP Status
+ - Code will need to be refactor in the future from class to hooks
 
 ## SECURITY TASK
   1. Firebase Database Rules
   2. Restric Google API only to renthomebase.com
 
 ## PRIORITY TASK
-  1. Develop the first database sketch (use old wanders)
+  1. Develop the first database sketch 
   2. Forms Validation With Formik
+	- components/modal/signIn.js
 
 ## NON-PRIORITY TASK
   1. Body colors and all of fonts need to be changed to #000
@@ -17,6 +19,7 @@
 
 ## PAGES TO BE BUILD
 
+  0. /index
   1. /find-a-hombase
   2. /living-in-homebase
   3. /sign-up

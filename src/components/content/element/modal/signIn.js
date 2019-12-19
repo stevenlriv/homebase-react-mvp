@@ -1,41 +1,42 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, setState, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useFormik } from 'formik';
 import { loginEmail } from '../../../../Store/action/loginAction';
 import $ from 'jquery';
 
-class Login extends Component {
+function Login(props) {
 
-  state = { email: '', password: '' };
+  const { loginError, isAuthenticated } = props;
 
-  handleEmailChange = ({ target }) => {
-    this.setState({ email: target.value });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = ({ target }) => {
+    setEmail(target.value);
   };
 
-  handlePasswordChange = ({ target }) => {
-    this.setState({ password: target.value });
+  const handlePasswordChange = ({ target }) => {
+    setPassword(target.value);
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
+    //To prevent modal reload after submission
     e.preventDefault();
 
-    const { dispatch } = this.props;
-    const { email, password } = this.state;
+    const { dispatch } = props;
 
     dispatch(loginEmail(email, password));
 
     return;
   };
 
-    render() {
-        const { loginError, isAuthenticated } = this.props;
-
-        if (this.props.isAuthenticated) {
-          $("#login_modal").click();
-        }
+  if (isAuthenticated) {
+    //To close the modal after successful login
+    $("#login_modal").click();
+  }
 
         return (
-
             <Fragment>
                 <div className="modal fade" id="login_modal" tabIndex={-1} role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered" role="document">
@@ -55,11 +56,11 @@ class Login extends Component {
                             )}
 
                                 <form action="/" id="login-form">
-                                    <input onChange={this.handleEmailChange} type="text" className="form-control" placeholder="Email" required />
+                                    <input onChange={handleEmailChange} type="email" className="form-control" placeholder="Email" required />
 
-                                    <input onChange={this.handlePasswordChange} type="password" className="form-control" placeholder="Password" required />
+                                    <input onChange={handlePasswordChange} type="password" className="form-control" placeholder="Password" required />
 
-                                    <button onClick={this.handleSubmit} type="submit" className="btn btn-block btn-lg bg-dark-hb font-weight-bold">SIGN IN</button>
+                                    <button onClick={handleSubmit} type="submit" className="btn btn-block btn-lg bg-dark-hb font-weight-bold">SIGN IN</button>
                                 </form>
                                 <div className="form-excerpts">
                                     <ul className="list-unstyled">
@@ -84,8 +85,8 @@ class Login extends Component {
                 </div>
             </Fragment>
         )
-    }
 }
+
 const mapStateToProps = state => {
     return {
         isLoggingIn: state.userAuth.isLoggingIn,
