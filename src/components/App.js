@@ -1,0 +1,111 @@
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { connect } from "react-redux";
+import ProtectedRoute from "./protectedRoute";
+
+import Index from './page/index';
+import AllListingGrid from './page/all-listing-grid';
+import AllListingList from './page/all-listing-list';
+import ListingDetails from './page/listing-details';
+import Category from './page/all-categoris';
+import Location from './page/all-location';
+import Pricing from './page/pricing-plan';
+import Faq from './page/faq';
+import About from './page/about';
+import Contact from './page/contact';
+import AuthProfile from './page/auth-profile';
+import AuthDeshbord from './page/auth-deshbord';
+import CheckoutBasic from './page/checkout-basic';
+import CheckoutAdvanced from './page/advanced';
+import Enterprise from './page/enterprise';
+import Invoice from './page/invoice';
+import AddListing from './page/add-listing';
+
+
+function App(props) {
+  const { isAuthenticated, isVerifying } = props;
+  return (
+    <Router basename={process.env.PUBLIC_URL} >
+        <Switch>
+          <Route exact path = '/' component = { Index } />
+          <Route path = '/all-listings-grid' component = { AllListingGrid } />
+          <Route path = '/all-listings-list' component = { AllListingList } />
+          <Route path = '/listing-details:id' component = { ListingDetails } />
+          <Route path = '/all-categories' component = { Category } />
+          <Route path = '/all-locations' component = { Location } />
+          <Route path = '/pricing-plans' component = { Pricing } />
+          <Route path = '/faqs' component = { Faq } />
+          <Route path = '/about' component = { About } />
+          <Route path = '/contact' component = { Contact } />
+
+          {/* Only Access to a log-in user */}
+          <ProtectedRoute
+            exact
+            path="/add-listing"
+            component={AddListing}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/profile"
+            component={AuthProfile}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/my-homebase"
+            component={AuthDeshbord}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/checkout"
+            component={CheckoutBasic}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/advanced"
+            component={CheckoutAdvanced}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/enterprise"
+            component={Enterprise}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/invoice"
+            component={Invoice}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+        </Switch>
+    </Router>
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.userAuth.isAuthenticated,
+    isVerifying: state.userAuth.isVerifying
+  };
+}
+
+export default connect(mapStateToProps)(App);
