@@ -11,6 +11,7 @@ function Login(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let [formError, setError] = useState('');
 
   const handleEmailChange = ({ target }) => {
     setEmail(target.value);
@@ -23,6 +24,21 @@ function Login(props) {
   const handleSubmit = (e) => {
     //To prevent modal reload after submission
     e.preventDefault();
+
+    if ( email == '' ) {
+      setError('Please enter your email address.');
+      return;
+    }
+
+    if ( password == '' ) {
+      setError('Please enter your password.');
+      return;
+    }
+
+    if ( loginError ) {
+      setError('Incorrect email or password.');
+      // dont return
+    }
 
     const { dispatch } = props;
 
@@ -49,9 +65,9 @@ function Login(props) {
                             </div>
                             <div className="modal-body">
 
-                            {loginError && (
+                            {formError && (
                                 <p className="alert alert-danger" role="alert">
-                                  Incorrect email or password.
+                                  {formError}
                                 </p>
                             )}
 
