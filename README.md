@@ -70,20 +70,21 @@
   12. Check-in, check out infrastructure
 
 ## PAGES TO BE BUILD
-  0. /index
-  1. /find-a-hombase
-  2. /living-in-homebase
-  3. /sign-up
-  4. /recover-password
-  5. /membership
-  6. /for-owners
-  7. /about
-  8. /faqs
-  9. /terms
-  10. /privacy
-  11. /contact
-  12. /my-homebase
-  13. /profile
+  0.  [] /index
+  1.  [] /find-a-hombase
+  2.  [] /living-in-homebase
+  3.  [] /sign-up
+  4.  [] /recover-password
+  5.  []/membership
+  6.  [] /for-owners
+  7.  [] /about
+  8.  [] /faqs
+  9.  [X] /terms [done; proof read required]
+  10. [X] /privacy [done; proof read required]
+  11. [X] /contact [done; proof read required]
+  12. [] /my-homebase
+  13. [] /profile
+  14. [] FOOTER SOCIAL LINKS {Facebook, Instagram}
 
 
 ## Brandind - Colors
