@@ -29,11 +29,7 @@ const Faqs = (props) => {
                         <div className="col-lg-12">
                             <div className="faq-contents">
                                 <div className="atbd_content_module atbd_faqs_module">
-                                    <div className="atbd_content_module__tittle_area">
-                                        <div className="atbd_area_title">
-                                            <h4><span className="la la-question-circle"></span>Lisiitng FAQ's</h4>
-                                        </div>
-                                    </div>
+
                                     <Accordion2 />
                                 </div>
                             </div>

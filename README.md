@@ -78,7 +78,7 @@
   5.  []/membership
   6.  [] /for-owners
   7.  [] /about
-  8.  [] /faqs
+  8.  [X] /faqs [done; proof read required]
   9.  [X] /terms [done; proof read required]
   10. [X] /privacy [done; proof read required]
   11. [X] /contact [done; proof read required]
