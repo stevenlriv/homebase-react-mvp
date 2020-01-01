@@ -22,6 +22,9 @@
   1. Body colors and all of fonts need to be changed to #000
   2. Setup Facebook & Google log-ins
   3. Solve react SEO problems
+  4. Better quality logo
+  5. Refactor "Reducers & Actions"
+  6. Refactor every single file to eliminate not-needed states and components
 
 ## ROADMAP OVERVIEW
   1. Work with the listing structure so we can migrate our listing to the new site
@@ -70,7 +73,7 @@
   12. Check-in, check out infrastructure
 
 ## PAGES TO BE BUILD
-  0.  [] /index
+  0.  [] /index {User Testimonials}
   1.  [] /find-a-hombase
   2.  [] /living-in-homebase
   3.  [] /sign-up
@@ -86,7 +89,6 @@
   13. [] /profile
   14. [] FOOTER SOCIAL LINKS {Facebook, Instagram}
 
-
 ## Brandind - Colors
  - Primary (dark orange): #d66d2a
  - Light 1: #d6bbaa
@@ -95,3 +97,7 @@
  - Black 1: #000
  - Black 2: #2B2B2B
  - Gray 1: #f1f1f1
+
+# FIRESTORE DATABASE
+
+  ## listing listingsCollection

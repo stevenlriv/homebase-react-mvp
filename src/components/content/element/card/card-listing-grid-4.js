@@ -1,9 +1,31 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { db } from "../../../../Store/firebase/firebase";
+
 const noAction = e => e.preventDefault();
+
+// delete list from redux
+//********************
+
 class ListingCardGrid4 extends Component {
+
     render() {
+
+      const getListings = () => {
+        db.collection('listings').where('availability', '==', true).limit(3).onSnapshot(handleSnapshot);
+      }
+
+      const handleSnapshot = snapshot => {
+        const items = snapshot.docs.map(doc => {
+          return { listingId: doc.id, ...doc.data() };
+        });
+
+        this.setState({homeListings: items});
+      }
+
+        console.log(this.props.homeListings);
         const { list, logdIn } = this.props;
         return (
             <Fragment>
@@ -16,89 +38,34 @@ class ListingCardGrid4 extends Component {
                                 <article className="atbd_single_listing_wrapper">
                                     <figure className="atbd_listing_thumbnail_area">
                                         <div className="atbd_listing_image">
-                                            <a href=" ">
-                                                <img src={img} alt="listingimage" />
-                                            </a>
+                                            <NavLink to={"/listing-details"+id}>
+                                                <img src="https://d29jjzkunmbe0r.cloudfront.net/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1PIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08d1fe90a6b563f407e4d0727740f1fb495209e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTWpRd01IZ3lOREF3QmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--9bfb88891e7e88cd78df5e1db60bbd52255b3c26/metwest-on-sunset-504-05.jpg" alt="listingimage" />
+                                            </NavLink>
                                         </div>{/*<!-- ends: .atbd_listing_image -->*/}
-
-                                        <div className="atbd_thumbnail_overlay_content">
-                                            <ul className="atbd_upper_badge">
-                                                <li><span className={"text-capitalize atbd_badge atbd_badge_"+badge}>{badge}</span></li>
-                                            </ul>{/*<!-- ends .atbd_upper_badge -->*/}
-                                        </div>{/*<!-- ends: .atbd_thumbnail_overlay_content -->*/}
                                     </figure>{/*<!-- ends: .atbd_listing_thumbnail_area -->*/}
                                     <div className="atbd_listing_info">
-                                    {
-                                        logdIn === null ? (
-                                            <Fragment>
 
                                                 <div className="atbd_content_upper">
-                                                    <h4 className="atbd_listing_title">
-                                                        <NavLink to={"/listing-details"+id}>{title}</NavLink>
-                                                    </h4>
-                                                    <div className="atbd_listing_meta">
-                                                        <span className="atbd_meta atbd_listing_rating">{rating}<i className="la la-star"></i></span>
-                                                        <span className="atbd_meta atbd_listing_price">{"$ "+price}</span>
-                                                        <span className={"atbd_meta atbd_badge_"+opCl}>{opCl} Now</span>
-                                                    </div>
                                                     <div className="atbd_listing_data_list">
                                                         <ul>
                                                             <li>
-                                                                <p><span className="la la-map-marker"></span>{location}</p>
+                                                                <h5>Los Angeles, US</h5>
                                                             </li>
                                                             <li>
-                                                                <p><span className="la la-phone"></span>{phone}</p>
+                                                                <p className="font-italic"><small>FROM $1500/MO - 1 BED, 1 BATH</small></p>
                                                             </li>
                                                             <li>
-                                                                <p><span className="la la-calendar-check-o"></span>Posted 2 months ago</p>
+                                                                <p>Available Feb 5</p>
                                                             </li>
                                                         </ul>
                                                     </div>{/*<!-- End atbd listing meta -->*/}
                                                 </div>
-                                                <div className="atbd_listing_bottom_content">
-                                                    <div className="atbd_content_left">
-                                                        <div className="atbd_listing_category">
-                                                            <a href=" "><span className="la la-map-marker"></span>Places &amp; Destination</a>
-                                                        </div>
-                                                    </div>
-                                                    <span className="atbd_content_right">
-                                                        <li className="atbd_count"><span className="la la-eye"></span>900+</li>
-                                                        <li className="atbd_save"><span className="la la-heart-o"></span></li>
-                                                    </span>
-                                                </div>
-                                            </Fragment>
-                                        ) : (
-                                            <Fragment>
-                                                <div className="atbd_content_upper">
-                                                    <h4 className="atbd_listing_title">
-                                                        <NavLink to={"/listing-details"+id}>{title}</NavLink>
-                                                    </h4>
-                                                    <div className="atbd_card_action">
-                                                        <div className="atbd_listing_meta">
-                                                            <span className="atbd_meta atbd_listing_rating">4.5<i className="la la-star"></i></span>
-                                                        </div>{/*<!-- ends: .atbd listing meta -->*/}
-                                                        <div className="db_btn_area">
-                                                            <div className="dropup edit_listing">
-                                                                <NavLink onClick={noAction} to="/at_demo" role="button" className="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</NavLink>
-                                                                <div className="dropdown-menu">
-                                                                    <NavLink onClick={noAction} className="dropdown-item" to="/at_demo"><span className="la la-edit color-primary"></span> Edit Your Listing</NavLink>
-                                                                    <NavLink onClick={noAction} className="dropdown-item" to="/at_demo"><span className="la la-money color-secondary"></span> Change Your Plan</NavLink>
-                                                                </div>
-                                                            </div>
-                                                            <NavLink onClick={noAction} to="/at_demo" className="directory_remove_btn btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal-item-remove">Delete</NavLink>
-                                                        </div> {/*<!--ends .db_btn_area-->*/}
-                                                    </div>
-                                                </div>{/*<!-- end .atbd_content_upper -->*/}
-                                                <div className="atbd_listing_bottom_content">
-                                                    <div className="listing-meta">
-                                                        <p><span>Plan Name:</span> Basic Plan</p>
-                                                        <p><span>Expiration:</span> February 13, 2020</p>
-                                                        <p><span>Listing Status:</span> Published</p>
-                                                    </div>
-                                                </div>
-                                            </Fragment>
-                                        )
-                                    }
+
+                                                <NavLink to={"/listing-details"+id}>
+                                                  <div className="atbd_listing_bottom_content btn bg-hb-orange bg-hb-dark-hover">
+                                                    <h5 className="text-white font-weight-bold" style={ {marginLeft: '115px'} }>Live Here</h5>
+                                                  </div>
+                                                </NavLink>
                                     </div>{/*<!-- ends: .atbd_listing_info -->*/}
                                 </article>{/*<!-- atbd_single_listing_wrapper -->*/}
                             </div>
@@ -110,9 +77,10 @@ class ListingCardGrid4 extends Component {
         )
     }
 }
-const mapStateToProps =  (state) => {
+const mapStateToProps = (state) => {
     return {
-        list : state.list
+        list : state.list,
+        homeListings: state.homeListings
     }
 }
 export default connect(mapStateToProps)(ListingCardGrid4);

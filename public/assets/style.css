@@ -1,4 +1,22 @@
 /* edits */
+.link-white a {
+  color: #fff !important;
+}
+
+.link-white a:hover {
+  text-decoration: underline;
+}
+
+.bg-hb-dark-hover:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+.bg-hb-orange {
+  background-color: #d66d2a !important;
+}
+
 .bg-hb {
   background-color: #dfdddc !important;
 }

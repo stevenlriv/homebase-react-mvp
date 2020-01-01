@@ -1,6 +1,10 @@
 import {combineReducers} from 'redux';
 import catReducer from './catReducer';
 import listReducer from './listingReducer';
+import {
+  listingsReducer,
+  homelistingsReducer 
+} from './listingsReducer';
 import placeReducer from './placeReducer';
 import testiReducer from './testiReducer';
 import clientReducer from './clientReducer';
@@ -13,6 +17,8 @@ import logoReducer from './logoReducer';
 const rootReducer = combineReducers({
     category: catReducer,
     list: listReducer,
+    listings: listingsReducer,
+    homeListings: homelistingsReducer,
     place: placeReducer,
     testimonial: testiReducer,
     client: clientReducer,
