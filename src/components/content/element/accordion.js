@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 const noAction = e => e.preventDefault();
 export class Accordion extends Component {
 
@@ -23,9 +25,21 @@ export class Accordion extends Component {
     }
 }
 
-export class Accordion2 extends Component {
+class Accordion2 extends Component {
 
     render() {
+        const cities = () => {
+          let string = '';
+          const actualPlaces = this.props.cities;
+          actualPlaces.forEach(
+            element => {
+              string = string + `${element.city} ${element.state}, `;
+            }
+          );
+          return string;
+        };
+
+
         return (
             <Fragment>
                 <div className="atbdb_content_module_contents">
@@ -37,7 +51,7 @@ export class Accordion2 extends Component {
 
                         <div className="accordion-single">
                             <h3 className="faq-title"><NavLink to="/faqs" onClick={noAction}>What cities are Homebase in?</NavLink></h3>
-                            <p className="ac-body" style={{display: 'block'}}>We currently are in San Juan PR and San Francisco, but have more locations coming soon.</p>
+                            <p className="ac-body" style={{display: 'block'}}>We currently are in {cities()}but have more locations coming soon.</p>
                         </div>
 
                         <div className="accordion-single">
@@ -90,3 +104,10 @@ export class Accordion2 extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        cities: state.cities
+    }
+}
+
+export default connect(mapStateToProps)(Accordion2);

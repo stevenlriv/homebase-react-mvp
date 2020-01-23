@@ -17,6 +17,9 @@
   1. Develop the first database sketch
   2. Forms Validation With Formik
 	- components/modal/signIn.js
+  3. Add number of beds to the main page form
+  4. get init state for citiesReducer.js from firestore database and not locally
+  5. Connect hello@renthomebase.com with Zendesk
 
 ## NON-PRIORITY TASK
   1. Body colors and all of fonts need to be changed to #000
@@ -25,6 +28,14 @@
   4. Better quality logo
   5. Refactor "Reducers & Actions"
   6. Refactor every single file to eliminate not-needed states and components
+  7. Pictures for al cities Categories
+
+## NEXT APP development
+  1. Simplify my roadmap and focus on:
+    - BASIC APP FUNCTIONALITIES
+    - CHAT PLATFORM CONNECTED TO Zendesk API
+    - POSSIBILITY TO REQUEST CLEANING SERVICE no need of backend just simple REQUEST
+    - MVP LAUNCH FEB 10
 
 ## ROADMAP OVERVIEW
   1. Work with the listing structure so we can migrate our listing to the new site
@@ -74,7 +85,7 @@
 
 ## PAGES TO BE BUILD
   0.  [] /index {User Testimonials}
-  1.  [] /find-a-hombase
+  1.  [] /find-a-homebase
   2.  [] /living-in-homebase
   3.  [] /sign-up
   4.  [] /recover-password
@@ -88,6 +99,7 @@
   12. [] /my-homebase
   13. [] /profile
   14. [] FOOTER SOCIAL LINKS {Facebook, Instagram}
+  15. The categories pages -- would be managed using firestore database
 
 ## Brandind - Colors
  - Primary (dark orange): #d66d2a
@@ -100,4 +112,6 @@
 
 # FIRESTORE DATABASE
 
-  ## listing listingsCollection
+## listing
+## memberships
+## users

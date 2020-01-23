@@ -3,35 +3,40 @@ import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import CardCategoryGrid4 from '../content/element/card/card-category-grid-4';
+import { SectionTitle } from '../content/element/section-title';
 import { connect } from 'react-redux';
 
 const AllCategoris = (props) => {
     const light = props.logo[0].light;
     return (
         <Fragment>
-            {/* Header section start */}
-            <section className="header-breadcrumb bgimage overlay overlay--dark">
-                <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
-                <div className="mainmenu-wrapper">
-                    <Header logo={light} class="menu--light" />                    
-                </div>
-                {/* <!-- ends: .mainmenu-wrapper --> */}
-                <BreadcrumbWraper title="All Categoris" />
-            </section>
-            {/* Header section end */}
+          {/* Header section start */}
+          <section className="header-breadcrumb bgimage overlay overlay--dark">
+            <div className="mainmenu-wrapper">
+                <Header logo={light} class="menu--light" />
+            </div>
+            {/* <!-- ends: .mainmenu-wrapper --> */}
+          </section>
+          {/* Header section end */}
+
             <section className="section-padding-1_7 border-bottom">
+              <SectionTitle
+                title="Choose your city"
+                content="" />
+
                 <div className="container">
+
                     <div className="row">
-                        <CardCategoryGrid4 /> 
+                        <CardCategoryGrid4 />
                     </div>
-                </div>      
+                </div>
             </section>
            <Footer />
         </Fragment>
     )
 }
 const mapStateToProps = state => {
-    return {        
+    return {
         logo: state.logo
     }
 }

@@ -24,7 +24,6 @@ import Enterprise from './page/enterprise';
 import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
 
-
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
   return (
@@ -34,7 +33,7 @@ function App(props) {
           <Route path = '/all-listings-grid' component = { AllListingGrid } />
           <Route path = '/all-listings-list' component = { AllListingList } />
           <Route path = '/listing-details:id' component = { ListingDetails } />
-          <Route path = '/all-categories' component = { Category } />
+          <Route path = '/find-a-homebase' component = { Category } />
           <Route path = '/all-locations' component = { Location } />
           <Route path = '/pricing-plans' component = { Pricing } />
           <Route path = '/faqs' component = { Faq } />

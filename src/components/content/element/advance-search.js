@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 const noAction = e => e.preventDefault();
-export class AdvSearch extends Component {
+
+class AdvSearch extends Component {
 
     render() {
         return (
@@ -19,17 +22,15 @@ export class AdvSearch extends Component {
                                         <div className="single_search_field search_category">
                                             <select className="search_fields" id="at_biz_dir-category">
                                             <option value>Choose a City</option>
-                                            <option value="automobile">San Juan</option>
-                                            <option value="education">San Francisco</option>
-                                            <option value="event">Chile</option>
+
                                             </select>
                                         </div>
-                                        
+
                                         <div className="single_search_field search_location">
                                             <select className="search_fields" id="at_biz_dir-location">
                                             <option value>Move in date</option>
-                                            <option value="ab">AB Simple</option>
-                                            <option value="australia">Australia</option>
+                                            <option value="30">AB Simple</option>
+                                            <option value="">Australia</option>
                                             <option value="australia-australia">Australia</option>
                                             </select>
                                         </div>
@@ -47,3 +48,11 @@ export class AdvSearch extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        cities: state.cities
+    }
+}
+
+export default connect(mapStateToProps)(AdvSearch);

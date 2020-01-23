@@ -1,7 +1,7 @@
 import React, {Fragment, Component} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
-import { AdvSearch } from '../content/element/advance-search';
+import AdvSearch from '../content/element/advance-search';
 import CardCategoryGrid4 from '../content/element/card/card-category-grid-4';
 import { SectionTitle } from '../content/element/section-title';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
@@ -21,7 +21,7 @@ class Index extends Component {
         const logdIn = () => {
             return this.props.isAuthenticated
         };
-        
+
         const light = this.props.logo[0].light;
         return (
             <Fragment>

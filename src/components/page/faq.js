@@ -3,17 +3,17 @@ import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { SectionTitle } from '../content/element/section-title';
-import { Accordion2 } from '../content/element/accordion';
+import Accordion2 from '../content/element/accordion';
 import { connect } from 'react-redux';
 
 const Faqs = (props) => {
-    const light = props.logo[0].light;
+
     return (
         <Fragment>
             {/* Header section start */}
             <section className="header-breadcrumb bgimage overlay overlay--dark">
                 <div className="mainmenu-wrapper">
-                    <Header logo={light} class="menu--light" />
+                    <Header logo={props.logo[0].light} class="menu--light" />
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
             </section>
