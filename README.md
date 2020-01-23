@@ -47,24 +47,24 @@
     - Restric Google API only to renthomebase.com
 
 ## SEED ROADMAP
- X) Solve react SEO problems
- X) A complete Sign-Up/Log-in System including Facebook and Google support
- x) The Platform for them to be able to make payments (stripe), and see their receipts and actual and old homebase, profile page, referral, etc; For credit cards, users will cover the fees
- X) Admin system in place to be able to monitor users, read the statistics, etc...
- X) Infrastructure to manage all the media assets from the supply side
- X) IOS & Androids Apps
- X) Supply side App support so user can host their houses
+ 1) Solve react SEO problems
+ 2) A complete Sign-Up/Log-in System including Facebook and Google support
+ 3) The Platform for them to be able to make payments (stripe), and see their receipts and actual and old homebase, profile page, referral, etc; For credit cards, users will cover the fees
+ 4) Admin system in place to be able to monitor users, read the statistics, etc...
+ 5) Infrastructure to manage all the media assets from the supply side
+ 6) IOS & Androids Apps
+ 7) Supply side App support so user can host their houses
     - Create all the payouts infrastructure
     - Create all the feature needed for the users to be able to add their place on their own
- X) Concierge Service
- X) To mitigate risk there can be certain measures in place:
+ 8) Concierge Service
+ 9) To mitigate risk there can be certain measures in place:
     - Background check
     - Credit check
     - Employer/Income check (when necessary)
     - Eviction history
     - ID / Fraud verification
     - Housing judgment history
- X) A feature for the users that are going to be living in the same house so they can
+ 10) A feature for the users that are going to be living in the same house so they can
     - Chat to their future roommates
     - See their profile and their ratings
 
