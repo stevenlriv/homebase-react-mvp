@@ -12,6 +12,9 @@ export const LogOut = () => dispatch => {
       dispatch({
           type: actionTypes.LOGOUT_SUCCESS,
       });
+
+      //Refresh the page; Simple fix to remove the loader from login modal added during user login
+      window.location.reload(true);
     })
     .catch(error => {
       //Do something with the error if you want!

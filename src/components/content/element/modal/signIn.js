@@ -21,6 +21,10 @@ function Login(props) {
     setPassword(target.value);
   };
 
+  const closeLoginModal = () => {
+    $("#login_modal").click();
+  }
+
   const handleSubmit = (e) => {
     //To prevent modal reload after submission
     e.preventDefault();
@@ -48,8 +52,18 @@ function Login(props) {
   };
 
   if (isAuthenticated) {
-    //To close the modal after successful login
-    $("#login_modal").click();
+    //Get Current HTML Content For Login Modal
+    const modalBodyId = "#login_modal .modal-body";
+
+    //Show the loading Status For Two Seconds
+    $( modalBodyId ).replaceWith( "<div class='modal-body'><div class='loader'></div></div>" );
+
+    //Close the modal, delay it for two second for user feedback
+    setTimeout(
+      function(){
+        closeLoginModal();
+      }, 2000);
+
   }
 
         return (
@@ -80,9 +94,11 @@ function Login(props) {
                                 </form>
                                 <div className="form-excerpts">
                                     <ul className="list-unstyled">
-                                        <li>Not a member? <NavLink to="/sign-up">Sign up</NavLink></li>
-                                        <li><NavLink to='/recover-password'>Recover Password</NavLink></li>
+                                        <li>Not a member? <NavLink to="/sign-up" onClick={closeLoginModal}>Sign up</NavLink></li>
+                                        <li><NavLink to="/recover-password" onClick={closeLoginModal}>Recover Password</NavLink></li>
                                     </ul>
+
+                                    {/*
                                     <div className="social-login">
                                     <span>Or connect with</span>
                                     <p>
@@ -94,6 +110,7 @@ function Login(props) {
                                         </NavLink>
                                     </p>
                                     </div>
+                                    */}
                                 </div>
                             </div>
                         </div>

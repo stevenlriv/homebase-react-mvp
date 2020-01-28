@@ -23,6 +23,7 @@ import CheckoutAdvanced from './page/advanced';
 import Enterprise from './page/enterprise';
 import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
+import SignUp from './page/sign-up';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -41,6 +42,9 @@ function App(props) {
           <Route path = '/privacy' component = { Privacy } />
           <Route path = '/about' component = { About } />
           <Route path = '/contact' component = { Contact } />
+
+          {/* NO Access to a log-in user; for that we use "!" */}
+          <Route path = '/sign-up' component = { SignUp } />
 
           {/* Only Access to a log-in user */}
           <ProtectedRoute
