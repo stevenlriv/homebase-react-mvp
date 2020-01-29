@@ -1,14 +1,103 @@
-import React, {Fragment, Component} from 'react';
+import React, { useState, setState, Fragment } from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
 import Map1 from '../content/element/map';
 import { SectionTitle } from '../content/element/section-title';
-class SignUp extends Component {
+import { signUpEmail } from '../../Store/action/signupAction';
+import $ from 'jquery';
 
-    render () {
-        const light = this.props.logo[0].light;
+function SignUp(props) {
+
+  const { signUpError, isAuthenticated } = props;
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setconfirmPassword] = useState('');
+  const [terms, setTerms] = useState('');
+  let [formError, setError] = useState('');
+
+
+  const light = props.logo[0].light;
+
+  const handleFullNameChange = ({ target }) => {
+    setFullName(target.value);
+  };
+
+  const handleEmailChange = ({ target }) => {
+    setEmail(target.value);
+  };
+
+  const handlePasswordChange = ({ target }) => {
+    setPassword(target.value);
+  };
+
+  const handleconfirmPasswordChange = ({ target }) => {
+    setconfirmPassword(target.value);
+  };
+
+  const handleTermsChange = ({ target }) => {
+    setTerms(target.value);
+  };
+
+  const handleSubmit = (e) => {
+    //To prevent modal reload after submission
+    e.preventDefault();
+
+    if ( !terms ) {
+      setError('To create an account, you need to accept our terms and condition.');
+      return;
+    }
+
+    if ( fullName == '' ) {
+      setError('Please enter your full name.');
+      return;
+    }
+
+    if ( email == '' ) {
+      setError('Please enter your email address.');
+      return;
+    }
+
+    if ( password == '' ) {
+      setError('Please enter your password.');
+      return;
+    }
+
+    // Password needs to be more than 8 characters
+    if( password.length < 8 ) {
+      setError('Your password needs to be 8 characters or more.');
+      return;
+    }
+
+    if ( confirmPassword == '' ) {
+      setError('Please confirm your password.');
+      return;
+    }
+
+    if ( password != confirmPassword ) {
+      setError('Your password does not match.');
+      return;
+    }
+
+    if ( signUpError ) {
+      setError(signUpError);
+      // dont return
+    }
+
+    const { dispatch } = props;
+
+    dispatch(signUpEmail(fullName, email, password, confirmPassword));
+
+    return;
+  };
+
+  // If login send him to his homebase
+  if( isAuthenticated ) { return <Redirect to="/my-homebase"  /> }
+
         return (
             <Fragment>
                 {/* Header section start */}
@@ -29,25 +118,31 @@ class SignUp extends Component {
 
                             <div className="row">
 
+                            {formError && (
+                                <p className="alert alert-danger mx-auto" role="alert">
+                                  {formError}
+                                </p>
+                            )}
+
                                 <div className="col-lg-10 offset-lg-1">
                                     <div className="atbd_content_module">
                                         <div className="atbdb_content_module_contents">
-                                            <form action="/">
+                                            <form action="/" id="signup-form">
                                                 <div className="form-group">
                                                     <label htmlFor="full_name" className="form-label">Full Name</label>
-                                                    <input type="text" placeholder="John Doe" id="full_name" className="form-control" />
+                                                    <input onChange={handleFullNameChange} type="text" placeholder="John Doe" id="full_name" className="form-control" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="email" className="form-label">Email</label>
-                                                    <input type="email" id="email" className="form-control" placeholder="Enter your best email" />
+                                                    <input onChange={handleEmailChange} type="email" id="email" className="form-control" placeholder="Enter your best email" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="password" className="form-label">Password</label>
-                                                    <input type="password" id="password" className="form-control" placeholder="Needs to be more than 8 characters" />
+                                                    <input onChange={handlePasswordChange} type="password" id="password" className="form-control" placeholder="Needs to be 8 characters or more" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="confirm_password" className="form-label">Confirm Password</label>
-                                                    <input type="password" id="confirm_password" className="form-control" placeholder="" />
+                                                    <input onChange={handleconfirmPasswordChange} type="password" id="confirm_password" className="form-control" placeholder="Enter your password again" />
                                                 </div>
 
                                             </form>
@@ -58,11 +153,11 @@ class SignUp extends Component {
 
                                 <div className="col-lg-10 offset-lg-1 text-center">
                                     <div className="atbd_term_and_condition_area custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                                        <input type="checkbox" className="custom-control-input" name="listing_t" value="1" id="listing_t" />
+                                        <input onChange={handleTermsChange} type="checkbox" className="custom-control-input" name="listing_t" value="1" id="listing_t" />
                                         <label htmlFor="listing_t" className="not_empty custom-control-label">I Agree with all <a href="/terms" id="listing_t_c" target="_blank">Terms & Conditions</a></label>
                                     </div>
                                     <div className="btn_wrap list_submit m-top-25">
-                                        <button type="submit" className="btn bg-dark-hb btn-lg listing_submit_btn">Submit listing</button>
+                                        <button onClick={handleSubmit} type="submit" className="btn bg-dark-hb btn-lg listing_submit_btn">Create Account</button>
                                     </div>
                                 </div>{/*<!-- ends: .col-lg-10 -->*/}
                             </div>
@@ -73,13 +168,13 @@ class SignUp extends Component {
                <Footer />
             </Fragment>
         )
-    }
 }
 const mapStateToProps = state => {
     return {
         list: state.list,
-        login : state.login,
-        logo: state.logo
+        logo: state.logo,
+        signUpError: state.users.signupError,
+        isAuthenticated: state.userAuth.isAuthenticated
     }
 }
 

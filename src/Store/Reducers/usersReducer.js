@@ -1,18 +1,29 @@
-var item = localStorage.getItem('user');
-            
-const initState = JSON.parse(item);
+import * as actionTypes from '../action/actionTypes';
+
+const initState = {
+  signupError: false,
+  user: {}
+};
 
 const UsersReducer = (state = initState, action) => {
-    switch(action.type){
-        case 'CREATE_USER' :                   
-            localStorage.setItem("user", action.user);
-            return JSON.parse(localStorage.getItem('user'));            
-        case 'CREATE_USER_ERROR' :
-        return {            
-            successMessage: false
-        }
-        default:
-        return state;
-    }
-}
-export default UsersReducer
+  switch (action.type) {
+    case actionTypes.SIGNUP_REQUEST:
+      return {
+        ...state,
+      };
+    case actionTypes.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        user: action.user
+      };
+    case actionTypes.SIGNUP_FAILURE:
+      return {
+        ...state,
+        signupError: action.error
+      };
+    default:
+      return state;
+  }
+};
+
+export default UsersReducer;

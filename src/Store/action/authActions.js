@@ -1,6 +1,8 @@
 import { myFirebase } from '../firebase/firebase';
 import * as actionTypes from './actionTypes';
 
+//This is proccess on configureStore.js
+
 export const verifyAuth = () => dispatch => {
   dispatch({
       type: actionTypes.VERIFY_REQUEST,

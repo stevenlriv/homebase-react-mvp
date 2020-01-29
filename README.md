@@ -67,6 +67,7 @@
  10) A feature for the users that are going to be living in the same house so they can
     - Chat to their future roommates
     - See their profile and their ratings
+ 11) Brand all firebase emails
 
 ## Brandind - Colors
  - Primary (dark orange): #d66d2a
@@ -82,3 +83,4 @@
 ## listing
 ## memberships
 ## users
+ - Any change made to the user structure needs to be updated on signupAction.js

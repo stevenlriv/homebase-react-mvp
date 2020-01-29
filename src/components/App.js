@@ -24,6 +24,7 @@ import Enterprise from './page/enterprise';
 import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
 import SignUp from './page/sign-up';
+import RecoverPassword from './page/recover-password';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -42,9 +43,8 @@ function App(props) {
           <Route path = '/privacy' component = { Privacy } />
           <Route path = '/about' component = { About } />
           <Route path = '/contact' component = { Contact } />
-
-          {/* NO Access to a log-in user; for that we use "!" */}
           <Route path = '/sign-up' component = { SignUp } />
+          <Route path = '/recover-password' component = { RecoverPassword } />
 
           {/* Only Access to a log-in user */}
           <ProtectedRoute
