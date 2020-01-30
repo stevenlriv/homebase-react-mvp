@@ -1,5 +1,6 @@
 import { myFirebase, db } from "../firebase/firebase";
 import * as actionTypes from './actionTypes';
+import { createUserDocument } from "../firebase/createUserDocument";
 
 export const signUpEmail = (fullName, email, password, confirmPassword) => dispatch => {
 
@@ -29,20 +30,8 @@ export const signUpEmail = (fullName, email, password, confirmPassword) => dispa
       //Include its full name
       const userId = user.user.uid;
 
-      db.collection("users").doc(userId).set({
-        aboutMe: "",
-        birthDate: "",
-        fullName: fullName,
-        gender: "",
-        languages: "",
-        linkedIn: "",
-        location: "",
-        phoneNumber: "",
-        profilePicture: "",
-        school: "",
-        work: ""
-      });
-      
+      createUserDocument(userId, fullName);
+
     })
     .catch(error => {
       //Do something with the error if you want!

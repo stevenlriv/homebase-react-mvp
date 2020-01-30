@@ -48,24 +48,23 @@ function Login(props) {
 
     dispatch(loginEmail(email, password));
 
-    if (isAuthenticated) {
-      //Get Current HTML Content For Login Modal
-      const modalBodyId = "#login_modal .modal-body";
-
-      //Show the loading Status For Two Seconds
-      $( modalBodyId ).replaceWith( "<div class='modal-body'><div class='loader'></div></div>" );
-
-      //Close the modal, delay it for two second for user feedback
-      setTimeout(
-        function(){
-          closeLoginModal();
-        }, 2000);
-
-    }
-
     return;
   };
 
+  if (isAuthenticated) {
+    //Get Current HTML Content For Login Modal
+    const modalBodyId = "#login_modal .modal-body";
+
+    //Show the loading Status For Two Seconds
+    $( modalBodyId ).replaceWith( "<div class='modal-body'><div class='loader'></div></div>" );
+
+    //Close the modal, delay it for two second for user feedback
+    setTimeout(
+      function(){
+        closeLoginModal();
+      }, 2000);
+
+  }
 
 
         return (

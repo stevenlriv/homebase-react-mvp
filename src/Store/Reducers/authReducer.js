@@ -60,7 +60,8 @@ const authReducer = (state = initState, action) => {
     case actionTypes.VERIFY_SUCCESS:
       return {
         ...state,
-        isVerifying: false
+        isVerifying: false,
+        user: action.user
       };
     default:
       return state;

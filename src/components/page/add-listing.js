@@ -2,11 +2,17 @@ import React, {Fragment, Component} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Map1 from '../content/element/map';
 class AddListing extends Component {
-    
+
     render () {
+        const user = this.props.user;
+
+        // Verify if the user is an admin, if not reddirect away
+        if( user.userData.type != "admin" ) return <Redirect to="/my-homebase"  />;
+
         const light = this.props.logo[0].light;
         return (
             <Fragment>
@@ -14,7 +20,7 @@ class AddListing extends Component {
                 <section className="header-breadcrumb bgimage overlay overlay--dark">
                     <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
                     <div className="mainmenu-wrapper">
-                        <Header logo={light} class="menu--light" />                    
+                        <Header logo={light} class="menu--light" />
                     </div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
                     <BreadcrumbWraper title="Add Listing" />
@@ -428,7 +434,7 @@ class AddListing extends Component {
                                             <div className="map" id="map-one" style={{position: 'relative'}}>
                                                 <Map1 />
                                             </div>
-                                                    
+
                                             <div className="cor-wrap form-group">
                                                 <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
                                                     <input type="checkbox" className="custom-control-input" name="manual_coordinate" value="1" id="manual_coordinate" />
@@ -517,7 +523,7 @@ class AddListing extends Component {
                             </div>
                         </div>
                     </section>{/*<!-- ends: .add-listing-wrapper -->*/}
-                    
+
 
                <Footer />
             </Fragment>
@@ -526,9 +532,10 @@ class AddListing extends Component {
 }
 const mapStateToProps = state => {
     return {
-        list: state.list,
-        login : state.login,
-        logo: state.logo
+      user: state.userAuth.user,
+      list: state.list,
+      isAuthenticated: state.userAuth.isAuthenticated,
+      logo: state.logo
     }
 }
 

@@ -20,9 +20,8 @@ import Membership from './page/membership';
 import Contact from './page/contact';
 import AuthProfile from './page/auth-profile';
 import AuthDeshbord from './page/auth-deshbord';
+import AdminDashbord from './page/admin-dashboard';
 import CheckoutBasic from './page/checkout-basic';
-import CheckoutAdvanced from './page/advanced';
-import Enterprise from './page/enterprise';
 import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
 import SignUp from './page/sign-up';
@@ -34,12 +33,9 @@ function App(props) {
     <Router basename={process.env.PUBLIC_URL} >
         <Switch>
           <Route exact path = '/' component = { Index } />
-          <Route path = '/all-listings-grid' component = { AllListingGrid } />
           <Route path = '/all-listings-list' component = { AllListingList } />
           <Route path = '/listing-details:id' component = { ListingDetails } />
           <Route path = '/find-a-homebase' component = { Category } />
-          <Route path = '/all-locations' component = { Location } />
-          <Route path = '/pricing-plans' component = { Pricing } />
           <Route path = '/faqs' component = { Faq } />
           <Route path = '/membership' component = { Membership } />
           <Route path = '/living-in-homebase' component = { Living } />
@@ -49,6 +45,11 @@ function App(props) {
           <Route path = '/contact' component = { Contact } />
           <Route path = '/sign-up' component = { SignUp } />
           <Route path = '/recover-password' component = { RecoverPassword } />
+
+          {/* To be removed or edited */}
+          <Route path = '/all-listings-grid' component = { AllListingGrid } />
+          <Route path = '/all-locations' component = { Location } />
+          <Route path = '/pricing-plans' component = { Pricing } />
 
           {/* Only Access to a log-in user */}
           <ProtectedRoute
@@ -75,26 +76,11 @@ function App(props) {
             isVerifying={isVerifying}
           />
 
+          {/* To be removed or edited */}
           <ProtectedRoute
             exact
             path="/checkout"
             component={CheckoutBasic}
-            isAuthenticated={isAuthenticated}
-            isVerifying={isVerifying}
-          />
-
-          <ProtectedRoute
-            exact
-            path="/advanced"
-            component={CheckoutAdvanced}
-            isAuthenticated={isAuthenticated}
-            isVerifying={isVerifying}
-          />
-
-          <ProtectedRoute
-            exact
-            path="/enterprise"
-            component={Enterprise}
             isAuthenticated={isAuthenticated}
             isVerifying={isVerifying}
           />
@@ -107,6 +93,14 @@ function App(props) {
             isVerifying={isVerifying}
           />
 
+          {/* Admin Pages */}
+          <ProtectedRoute
+            exact
+            path="/admin-dashboard"
+            component={AdminDashbord}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
         </Switch>
     </Router>
   );

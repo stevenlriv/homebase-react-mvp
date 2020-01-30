@@ -83,4 +83,5 @@
 ## listing
 ## memberships
 ## users
- - Any change made to the user structure needs to be updated on signupAction.js
+ - Any change made to the user structure needs to be updated on createUserDocuments.js
+ - "type" is the user type, currently we support "basic" and "admin"
