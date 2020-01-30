@@ -15,6 +15,8 @@ import Faq from './page/faq';
 import Privacy from './page/privacy';
 import Terms from './page/terms';
 import About from './page/about';
+import Living from './page/living';
+import Membership from './page/membership';
 import Contact from './page/contact';
 import AuthProfile from './page/auth-profile';
 import AuthDeshbord from './page/auth-deshbord';
@@ -39,6 +41,8 @@ function App(props) {
           <Route path = '/all-locations' component = { Location } />
           <Route path = '/pricing-plans' component = { Pricing } />
           <Route path = '/faqs' component = { Faq } />
+          <Route path = '/membership' component = { Membership } />
+          <Route path = '/living-in-homebase' component = { Living } />
           <Route path = '/terms' component = { Terms } />
           <Route path = '/privacy' component = { Privacy } />
           <Route path = '/about' component = { About } />

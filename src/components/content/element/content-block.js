@@ -119,3 +119,144 @@ export class ContentBlockAbout extends Component {
         )
     }
 }
+
+export class ContentBlockMembership extends Component {
+
+    render() {
+        return (
+            <Fragment>
+                <section className="about-contents section-padding">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12 contents-wrapper">
+                                <div className="contents">
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-5 col-sm-6">
+                                            <h1>Members Benefits</h1>
+                                            <ul className="list-unstyled list-features p-top-15">
+                                                <li>
+                                                    <div className="list-count"><span>&#10004;</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Multiple cities to visit</h4>
+                                                        <p>Access to Landing homes across the US</p>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div className="list-count"><span>&#10004;</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Flexibility</h4>
+                                                        <p>Live without long term leases, or furniture shopping</p>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div className="list-count"><span>&#10004;</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Cero Fees</h4>
+                                                        <p>No applications or fees required to apply for a Homebase</p>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div className="list-count"><span>&#10004;</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Cero hassles</h4>
+                                                        <p>Utilities and internet included</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>{/*<!-- ends: .contents -->*/}
+                            </div>{/*<!-- ends: .content-block -->*/}
+                        </div>
+                    </div>
+                </section>
+
+            </Fragment>
+        )
+    }
+}
+
+export class ContentBlockLiving extends Component {
+
+    render() {
+        return (
+            <Fragment>
+                <section className="about-contents section-padding bg-hb">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12 contents-wrapper">
+                                <div className="contents">
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-5 col-sm-6">
+                                            <h1>Every Homebase includes</h1>
+                                            <ul className="list-unstyled list-features p-top-15">
+                                                <li>
+                                                    <div className="list-content">
+                                                        <h4>Bed and cozy linens</h4>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-content">
+                                                        <h4>Ultra-fast internet</h4>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-content">
+                                                        <h4>Lush toiletries</h4>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-content">
+                                                        <h4>Plush towels</h4>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-content">
+                                                        <h4>Bespoke furniture</h4>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className="col-lg-6 offset-lg-1 text-right col-sm-6 mt-5 mt-md-0">
+                                        <ul className="list-unstyled list-features p-top-15">
+                                            <li>
+                                                <div className="list-content">
+                                                    <h4>Kitchen appliances</h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="list-content">
+                                                    <h4>Cutlery and tableware</h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="list-content">
+                                                    <h4>Designer decor</h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="list-content">
+                                                    <h4>Smart TV (soon)</h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="list-content">
+                                                    <h4>Extra outlets</h4>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div>{/*<!-- ends: .contents -->*/}
+                            </div>{/*<!-- ends: .content-block -->*/}
+                        </div>
+                    </div>
+                </section>
+
+            </Fragment>
+        )
+    }
+}

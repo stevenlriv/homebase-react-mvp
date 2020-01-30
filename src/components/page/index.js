@@ -50,7 +50,7 @@ class Index extends Component {
                                 <div className="row">
                                     <CardListingGrid4 logdIn={logdIn()} />
                                     <div className="col-lg-12 text-center m-top-20">
-                                        <NavLink onClick={noAction} to="/find-a-homebase" className="btn bg-dark-hb">Find Your Homebase</NavLink>
+                                        <NavLink to="/find-a-homebase" className="btn bg-dark-hb">Find Your Homebase</NavLink>
                                     </div>
                                 </div>
                             </div>

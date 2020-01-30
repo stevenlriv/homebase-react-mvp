@@ -140,3 +140,59 @@ export class BreadcrumbAbout extends Component {
         )
     }
 }
+
+export class BreadcrumbMembership extends Component {
+
+    render() {
+
+        return (
+            <Fragment>
+                <div className="about-intro content_above">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-5 col-md-6">
+                                <h1 style={{color: 'black'}}>Homebase is the new way to live</h1>
+                                <p style={{fontSize: '18px'}}>Become a Homebase member and enjoy all the benefits of a fully furnished home, flexible leases, with no chores, or hassles.</p>
+                                <br />
+                                <h2 style={{color: '#d66d2a'}}>$99 per month</h2>
+                                <br />
+                                <br />
+
+                                    <NavLink to="/find-a-homebase" className="btn bg-dark-hb">Find Your Homebase Today!</NavLink>
+
+                            </div>
+                            <div className="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
+                                {/*<img src="./assets/img/why-homebase.jpg" width="516" height="344" alt="" className="svg" />*/}
+                                <img src="./assets/img/membership.jpg" width="540" height="478" alt="" className="svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        )
+    }
+}
+
+export class BreadcrumbLiving extends Component {
+
+    render() {
+
+        return (
+            <Fragment>
+                <div className="about-intro content_above">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-5 col-md-6">
+                                <h1 style={{color: '#000'}}>With flexible leases, concierge services, and homes that come ready to move-in, Homebase is the new way to live.</h1>
+                                <p style={{fontSize: '20px'}}>Our easy approval process means you can have your dream apartment in seconds, no nightmarish paperwork. Fully finished and with stress-free concierge service 24/7.</p>
+                            </div>
+                            <div className="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
+                                <img src="./assets/img/living.jpg" width="540" height="478" alt="" className="svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        )
+    }
+}
