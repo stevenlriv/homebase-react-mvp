@@ -10,6 +10,27 @@ const noAction = e => e.preventDefault();
 
 class AuthProfile extends Component {
     render () {
+        const user = this.props.user;
+
+        //Array for months names
+        let month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+
+        // We proccess the date format to only show month and year
+        const date = new Date(user.userAuth.joined);
+        let joinedDate = `${month[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+
         const light = this.props.logo[0].light;
         const logdIn = () => {
             return this.props.login
@@ -18,33 +39,36 @@ class AuthProfile extends Component {
             <Fragment>
                 {/* Header section start */}
                 <section className="header-breadcrumb bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
                     <div className="mainmenu-wrapper">
-                        <Header logo={light} class="menu--light" />                    
+                        <Header logo={light} class="menu--light" />
                     </div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
-                    <BreadcrumbWraper title="Author Profile" />
+                    <BreadcrumbWraper title="Your Profile" />
                 </section>
                 {/* Header section end */}
-    
+
                 <section className="author-info-area section-padding-strict section-bg">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="atbd_auhor_profile_area">
                                     <div className="atbd_author_avatar">
-                                        <img src="./assets/img/author-profile.jpg" alt="AuthorImage" />
+                                    {
+                                        user.userData.profilePicture == '' ? (
+                                            <img src="./assets/img/author-profile.jpg" width="120px" height="120px" alt="AuthorImage" />
+                                          ) : (
+                                            <img src={user.userData.profilePicture} width="120px" height="120px" alt="AuthorImage" />
+                                          )
+                                      }
                                         <div className="atbd_auth_nd">
-                                            <h2>Kenneth Frazier</h2>
-                                            <p>Joined in March 2019</p>
+                                            <h2>{user.userData.fullName}</h2>
+                                            <p>Joined in {joinedDate}</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
-                                        <div className="atbd_listing_meta">
-                                            <span className="atbd_meta atbd_listing_rating">4.5 <i className="la la-star"></i></span>
-                                            <p className="meta-info"><span>22</span>Reviews</p>
+                                        <div className="atbd_listing_meta" style={{border: "none"}}>
+                                            <NavLink to="/my-homebase#profile" className="atbd_meta atbd_listing_rating">Edit Profile</NavLink>
                                         </div>
-                                        <p className="meta-info"><span>15</span>Listings</p>
                                     </div>{/*<!-- ends: .atbd_author_meta -->*/}
                                 </div>{/*<!-- ends: .atbd_auhor_profile_area -->*/}
                             </div>
@@ -55,16 +79,84 @@ class AuthProfile extends Component {
                                     <div className="atbd_content_module">
                                         <div className="atbd_content_module__tittle_area">
                                             <div className="atbd_area_title">
-                                                <h4><span className="la la-user"></span>About Seller</h4>
+                                                <h4>Bio</h4>
                                             </div>
                                         </div>
                                         <div className="atbdb_content_module_contents">
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium doloremque laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accusantium doloremque laudan tium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                                                <br /> <br />
-                                                Nemo enim ipsam voluptatem quia voluptas cupidatat non proident, sunt culpa qui officia dese runt mollit anim id est laborum. Sedu perspi sunt explicabo. Nemo ucxqui officia voluptatem hscia unde omnis proident.</p>
+
+                                            {
+                                                user.userData.aboutMe != '' ? (
+                                                  <p>{user.userData.aboutMe}</p>
+                                                  ) : (
+                                                  <p>Add a bio on your homebase dashboard.</p>
+                                                  )
+                                              }
+
+                                              <br />
+                                              {
+                                                  user.userData.birthDate != '' || user.userData.gender != '' || user.userData.location != '' || user.userData.school != '' || user.userData.work != '' ? (
+                                                    <h3>More details</h3>
+                                                    ) : (
+                                                      <span></span>
+                                                    )
+                                              }
+                                              <br />
+                                              <ul className="list-group list-group-flush">
+                                                  {
+                                                      user.userData.birthDate != '' ? (
+                                                        <li className="list-group-item">
+                                                            <span className="la la-birthday-cake"></span>&nbsp;&nbsp;&nbsp;
+                                                            <span className="atbd_info">{user.userData.birthDate}</span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                  }
+
+                                                  {
+                                                      user.userData.gender != '' ? (
+                                                        <li className="list-group-item">
+                                                            <span className="la la-user"></span>&nbsp;&nbsp;&nbsp;
+                                                            <span className="atbd_info">{user.userData.gender}</span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                  }
+                                                  {
+                                                      user.userData.location != '' ? (
+                                                        <li className="list-group-item">
+                                                            <span className="la la-map-marker"></span>&nbsp;&nbsp;&nbsp;
+                                                            <span className="atbd_info">{user.userData.location}</span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                  }
+                                                  {
+                                                      user.userData.school != '' ? (
+                                                        <li className="list-group-item">
+                                                            <span className="la la-university"></span>&nbsp;&nbsp;&nbsp;
+                                                            <span className="atbd_info">{user.userData.school}</span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                  }
+                                                  {
+                                                      user.userData.work != '' ? (
+                                                        <li className="list-group-item">
+                                                            <span className="la la-briefcase"></span>&nbsp;&nbsp;&nbsp;
+                                                            <span className="atbd_info">{user.userData.work}</span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                  }
+                                              </ul>
                                         </div>
                                     </div>
-                                </div>{/*<!-- ends: .atbd_author_module -->*/}                                
+                                </div>{/*<!-- ends: .atbd_author_module -->*/}
                             </div>{/*<!-- ends: .col-md-8 -->*/}
                             <div className="col-lg-4 col-md-5 m-bottom-30">
                                 <div className="widget atbd_widget widget-card">
@@ -74,63 +166,43 @@ class AuthProfile extends Component {
                                     <div className="widget-body atbd_author_info_widget">
                                         <div className="atbd_widget_contact_info">
                                             <ul>
-                                                <li>
-                                                    <span className="la la-map-marker"></span>
-                                                    <span className="atbd_info">25 East Valley Road, Michigan</span>
-                                                </li>
-                                                <li>
-                                                    <span className="la la-phone"></span>
-                                                    <span className="atbd_info">(213) 995-7799</span>
-                                                </li>
-                                                <li>
-                                                    <span className="la la-envelope"></span>
-                                                    <span className="atbd_info">support@aazztech.com</span>
-                                                </li>
-                                                <li>
-                                                    <span className="la la-globe"></span>
-                                                    <NavLink to="/at_demo" onClick={noAction} className="atbd_info">www.aazztech.com</NavLink>
-                                                </li>
+                                              <li>
+                                                <span className="la la-envelope"></span>
+                                                <span className="atbd_info">{user.userAuth.email}</span>
+                                              </li>
+
+                                                {
+                                                    user.userData.phoneNumber != '' ? (
+                                                      <li>
+                                                          <span className="la la-phone"></span>
+                                                          <span className="atbd_info">{user.userData.phoneNumber}</span>
+                                                      </li>
+                                                      ) : (
+                                                        <span></span>
+                                                      )
+                                                  }
+                                                  {
+                                                      user.userData.linkedIn != '' ? (
+                                                        <li>
+                                                            <span className="la la-linkedin"></span>
+                                                            <span className="atbd_info"><a href={user.userData.linkedIn} target="_blank">LinkedIn</a></span>
+                                                        </li>
+                                                        ) : (
+                                                          <span></span>
+                                                        )
+                                                    }
                                             </ul>
                                         </div>{/*<!-- ends: .atbd_widget_contact_info -->*/}
-                                        <div className="atbd_social_wrap">
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-google-plus-g"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-dribbble"></span></NavLink></p>
-                                        </div>{/*<!-- ends: .atbd_social_wrap -->*/}
+
                                     </div>{/*<!-- ends: .widget-body -->*/}
                                 </div>{/*<!-- ends: .widget -->*/}
                             </div>{/*<!-- ends: .col-lg-4 -->*/}
 
                             <div className="col-lg-12">
-                                <div className="atbd_author_listings_area m-bottom-30">
-                                    <h1>Author Listings</h1>
-                                    <div className="atbd_author_filter_area">
-                                        <div className="dropdown">
-                                            <a className="btn btn-outline-primary dropdown-toggle" href="# " role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Filter by Category <span className="caret"></span>
-                                            </a>
-                                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a className="dropdown-item" href=" ">Restaurant</a>
-                                                <a className="dropdown-item" href=" ">Education</a>
-                                                <a className="dropdown-item" href=" ">Event</a>
-                                                <a className="dropdown-item" href=" ">Food</a>
-                                                <a className="dropdown-item" href=" ">Service</a>
-                                                <a className="dropdown-item" href=" ">Travel</a>
-                                                <a className="dropdown-item" href=" ">Others</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>{/*<!-- ends: .atbd_author_listings_area -->*/}
-                                
-                                <div className="row">
-                                    <CardListingGrid4 logdIn={logdIn()} />
-                                </div>
                             </div>
                         </div>
                     </div>
-                </section>                
+                </section>
                <Footer />
             </Fragment>
         )
@@ -138,6 +210,8 @@ class AuthProfile extends Component {
 }
 const mapStateToProps = state => {
     return {
+      user: state.userAuth.user,
+      isAuthenticated: state.userAuth.isAuthenticated,
         list: state.list,
         login : state.login,
         logo: state.logo

@@ -22,7 +22,9 @@ class AdvSearch extends Component {
                                         <div className="single_search_field search_category">
                                             <select className="search_fields" id="at_biz_dir-category">
                                             <option value>Choose a City</option>
-
+                                            {
+                                              
+                                            }
                                             </select>
                                         </div>
 

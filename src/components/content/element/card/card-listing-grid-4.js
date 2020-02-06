@@ -1,25 +1,40 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, setState, Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const noAction = e => e.preventDefault();
 
-class ListingCardGrid4 extends Component {
+function ListingCardGrid4(props) {
 
-    render() {
-        const { list, firebase } = this.props;
+  const { list, firebase } = props;
 
-          let query = firebase.collection('listings');
+  const [homeListings, setHomeListings] = useState('');
 
-          query.limit(3).get().then(querySnapshot => {
-            console.log(`Returned first batch of results`);
-            let query = querySnapshot.query;
-            return query.get();
-          }).then(() => {
-              console.log(`Returned second batch of results`);
-          });
+  //Get the home listings object, limited to just 3 houses
+  let listingsRef = firebase.collection('listings');
+  let query = listingsRef.where('availability', '==', true).limit(3).get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        //console.log('No matching documents.');
+        return;
+      }
+
+      //Add to state
+      setHomeListings(snapshot);
+      /*
+      snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+      });
+      */
+    })
+    .catch(err => {
+      //console.log('Error getting documents', err);
+    });
+
+
 
         return (
+
             <Fragment>
             {
                 Object.values(list).slice(0, 3).map((value, key) => {
@@ -67,7 +82,6 @@ class ListingCardGrid4 extends Component {
             }
             </Fragment>
         )
-    }
 }
 const mapStateToProps = (state) => {
     return {

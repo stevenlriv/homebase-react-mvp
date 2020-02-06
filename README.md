@@ -71,6 +71,7 @@
 
 ## Brandind - Colors
  - Primary (dark orange): #d66d2a
+ - Dark Red: #d6412a
  - Light 1: #d6bbaa
  - Light 2: #d6cac3
  - Light 3: #dfdddc
@@ -81,6 +82,9 @@
 # FIRESTORE DATABASE
 
 ## listing
+ - "availability" is "true" or "false" meaning that is available right now
+ - "availabilityDate" lets you know at which date the rental will be Available
+
 ## memberships
 ## users
  - Any change made to the user structure needs to be updated on createUserDocuments.js

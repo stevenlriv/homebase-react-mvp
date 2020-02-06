@@ -6,9 +6,10 @@ import { LogOut } from '../../../Store/action/logoutAction';
 
 class Header extends Component {
     render() {
+      const user = this.props.user;
 
       const logdIn = () => {
-        return this.props.isAuthenticated
+        return this.props.isAuthenticated;
       }
 
         return (
@@ -55,7 +56,10 @@ class Header extends Component {
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
                                                                 <div className="author-info">
-                                                                    <a href=" " className="author-avatar"><img src="./assets/img/author-avatar.png" alt="" className="rounded-circle" /></a>
+                                                                    <a href="#" className="author-avatar">
+
+                                                                            <img src="./assets/img/review-author-thumb.jpg" width="50px" height="50px" alt="AuthorImage" className="rounded-circle" />
+                                                                    </a>
                                                                     <ul className="list-unstyled">
                                                                       <li><NavLink to="/profile">My Profile</NavLink></li>
                                                                       <li><NavLink to="/my-homebase">My Homebase</NavLink></li>
@@ -96,7 +100,7 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.userAuth.isAuthenticated,
-
+        user: state.userAuth.user,
         isLoggingOut: state.userAuth.isLoggingOut,
         logoutError: state.userAuth.logoutError
     };

@@ -15,7 +15,7 @@ class CategoryCardGrid4 extends Component {
                         <div className="col-lg-4 col-sm-6" key={key}>
                             <div className="category-single category--img">
                                 <figure className="category--img4">
-                                    <img src={img} alt="" />
+                                    <img src={img} alt="" width="350px" height="280px" />
                                     <figcaption className="overlay-bg">
                                         <NavLink to={uri} className="cat-box">
                                             <div>

@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, {useState, setState, Fragment, Component} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
@@ -9,31 +9,127 @@ import { LogOut } from '../../Store/action/logoutAction';
 
 const noAction = e => e.preventDefault();
 
-class AuthDeshbord extends Component {
-    render () {
-        const user = this.props.user;
+function AuthDeshbord(props) {
+        const user = props.user;
+
+        // State for form fields
+        const [fullName, setFullName] = useState(user.userData.fullName);
+        const [email, setEmail] = useState(user.userAuth.email);
+        const [phone, setPhone] = useState(user.userData.phoneNumber);
+        const [linkedIn, setLinkedIn] = useState(user.userData.linkedIn);
+        const [birthDate, setBirthDate] = useState(user.userData.birthDate);
+        const [location, setLocation] = useState(user.userData.location);
+        const [password, setPassword] = useState('');
+        const [confirmPassword, setconfirmPassword] = useState('');
+        const [about, setAbout] = useState(user.userData.aboutMe);
+        let [formError, setError] = useState('');
+
+        const handleFullNameChange = ({ target }) => {
+          setFullName(target.value);
+        };
+
+        const handleEmailChange = ({ target }) => {
+          setEmail(target.value);
+        };
+
+        const handlePhoneChange = ({ target }) => {
+          setPhone(target.value);
+        };
+
+        const handleLinkedInChange = ({ target }) => {
+          setLinkedIn(target.value);
+        };
+
+        const handleBirthDateChange = ({ target }) => {
+          setBirthDate(target.value);
+        };
+
+        const handleLocationChange = ({ target }) => {
+          setLocation(target.value);
+        };
+
+        const handlePasswordChange = ({ target }) => {
+          setPassword(target.value);
+        };
+
+        const handleconfirmPasswordChange = ({ target }) => {
+          setconfirmPassword(target.value);
+        };
+
+        const handleAboutChange = ({ target }) => {
+          setAbout(target.value);
+        };
 
         //If admin are loggin in take them to the admin panel
         if( user.userData.type == "admin" ) return <Redirect to="/admin-dashboard"  />;
 
         const logdIn = () => {
-            return this.props.login
+            return props.isAuthenticated;
         }
-        const light = this.props.logo[0].light;
-        const logOut = (e) => {
-            e.preventDefault();
-            this.props.logOutdata(null);
-       }
+        const light = props.logo[0].light;
+
+        const { dispatch } = props;
+
+        // Profile form submit
+        const handleSubmit = (e) => {
+          //To prevent modal reload after submission
+          e.preventDefault();
+
+          if ( fullName == '' ) {
+            setError('Please enter your full name.');
+            return;
+          }
+
+          if ( email == '' ) {
+            setError('An email address is required.');
+            return;
+          }
+
+          // If the user wants to change the passwod
+          if ( password != '' ) {
+
+            // Password needs to be more than 8 characters
+            if( password.length < 8 ) {
+              setError('Your password needs to be 8 characters or more.');
+              return;
+            }
+
+            if ( confirmPassword == '' ) {
+              setError('Please confirm your password.');
+              return;
+            }
+
+            if ( password != confirmPassword ) {
+              setError('Your passwords does not match.');
+              return;
+            }
+
+          }
+
+          //dispatch(signUpEmail(fullName, email, password, confirmPassword));
+
+          /*
+          if ( signUpError ) {
+            setError(signUpError);
+            // dont return
+          }*/
+
+          //CHANGE FIREBASE Email
+
+          //CHANGE FIREBASE USER PASSWORD
+
+          return;
+        }
+
         return (
             <Fragment>
                 {/* Header section start */}
                 <section className="header-breadcrumb bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
                     <div className="mainmenu-wrapper">
                         <Header logo={light} class="menu--light" />
                     </div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
-                    <BreadcrumbWraper title="Author Deshbord" />
+                    <BreadcrumbWraper title="Your Homebase" />
                 </section>
                 {/* Header section end */}
 
@@ -48,18 +144,19 @@ class AuthDeshbord extends Component {
                                             <div className="dashboard-nav-area">
                                                 <ul className="nav" id="dashboard-tabs" role="tablist">
                                                     <li className="nav-item">
-                                                        <a className="nav-link active" id="all-listings" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="true">My Listings</a>
+                                                        <a className="nav-link active" id="all-listings" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="true">Current Homebase</a>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Profile</a>
+                                                        <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</a>
                                                     </li>
-                                                    <li className="nav-item">
+                                                    {/*<li className="nav-item">
                                                         <a className="nav-link" id="faborite-listings" data-toggle="tab" href="#favorite" role="tab" aria-controls="favorite" aria-selected="false">Favorite Listing</a>
-                                                    </li>
+                                                    </li>*/}
                                                 </ul>
                                                 <div className="nav_button">
-                                                    <NavLink to="/add-listing" className="btn btn-primary"><span className="la la-plus"></span> Add Listing</NavLink>
-                                                    <NavLink to="/at_deo" onClick={logOut} className="btn btn-secondary">Log Out</NavLink>
+                                                  <NavLink to="/add-listing" className="btn bg-hb-orange bg-hb-dark-hover text-white"><span className="la la-comment"></span> Get in touch with us</NavLink>
+                                                  <div className="d-block d-sm-none" style={{marginTop: "10px"}}></div> {/* Mobile space required*/}
+                                                  <NavLink to="/" onClick={props.logOut} className="btn bg-dark-hb">Schedule a Homebase cleanup</NavLink>
                                                 </div>
                                             </div>
                                         </div>{/*<!-- ends: .col-lg-12 -->*/}
@@ -76,19 +173,30 @@ class AuthDeshbord extends Component {
                                 </div>{/*<!-- ends: .tab-pane -->*/}
                                 <div className="tab-pane fade p-bottom-30" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div className="container">
+                                    {formError && (
+                                        <p className="alert alert-danger mx-auto" role="alert">
+                                          {formError}
+                                        </p>
+                                    )}
                                         <div className="row">
+
                                             <div className="col-lg-3 col-md-4 mb-5 mb-lg-0">
                                                 <div className="user_pro_img_area">
-                                                    <img src="./assets/img/author-profile.jpg" alt="" />
+                                                {
+                                                    user.userData.profilePicture == '' ? (
+                                                        <img src="./assets/img/author-profile.jpg" width="120px" height="120px" alt="AuthorImage" />
+                                                      ) : (
+                                                        <img src={user.userData.profilePicture} width="120px" height="120px" alt="AuthorImage" />
+                                                      )
+                                                  }
                                                     <div className="image-info">
-                                                        <h6>Profile Image</h6>
-                                                        <span>JPG or PNG 120x120 px</span>
+
                                                     </div>
                                                     <div className="custom-file-upload">
                                                         <input type="file" id="customFile" />
-                                                        <label htmlFor="customFile" className="btn btn-sm btn-secondary">Upload New Image</label>
+                                                        <label htmlFor="customFile" className="btn btn-sm bg-hb-orange bg-hb-dark-hover text-white">Upload New Image</label>
                                                     </div>
-                                                    <button className="btn btn-sm btn-danger">Delete Image</button>
+                                                    <button className="btn btn-sm bg-dark-hb">Delete Image</button>
                                                 </div>
                                             </div>
                                             <div className="col-lg-9 col-md-8">
@@ -106,108 +214,60 @@ class AuthDeshbord extends Component {
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="full_name" className="not_empty">Full Name</label>
-                                                                            <input className="form-control" type="text" placeholder="Full name" id="full_name" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="user_name" className="not_empty">Username</label>
-                                                                            <input className="form-control" id="user_name" type="text" disabled="disabled" value="admin" />
-                                                                            <p>(Username can not be changed)</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="first_name" className="not_empty">First Name</label>
-                                                                            <input className="form-control" id="first_name" type="text" name="user[first_name]" placeholder="First Name" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="last_name" className="not_empty">Last Name</label>
-                                                                            <input className="form-control" id="last_name" type="text" placeholder="Last Name" />
+                                                                            <input onChange={handleFullNameChange} className="form-control" type="text" placeholder="Full name" id="full_name" value={fullName} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="req_email" className="not_empty">Email (required)</label>
-                                                                            <input className="form-control" id="req_email" type="text" placeholder="mail@example.com" required="" />
+                                                                            <input onChange={handleEmailChange} className="form-control" id="req_email" type="text" placeholder="mail@example.com" required="" value={email} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="phone" className="not_empty">Cell Number</label>
-                                                                            <input className="form-control" type="tel" placeholder="Phone number" id="phone" />
+                                                                            <label htmlFor="phone" className="not_empty">Phone Number</label>
+                                                                            <input onChange={handlePhoneChange} className="form-control" type="tel" placeholder="Phone number" id="phone" value={phone} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="website" className="not_empty">Website</label>
-                                                                            <input className="form-control" id="website" type="text" placeholder="Website" />
+                                                                            <label htmlFor="website" className="not_empty">LinkedIn</label>
+                                                                            <input onChange={handleLinkedInChange} className="form-control" id="website" type="text" placeholder="Your LinkedIn profile url" value={linkedIn} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="address" className="not_empty">Address</label>
-                                                                            <input className="form-control" id="address" type="text" placeholder="Address" />
+                                                                            <label htmlFor="address" className="not_empty">Birthdate</label>
+                                                                            <input onChange={handleBirthDateChange} className="form-control" type="text" placeholder="MM-DD-YYYY" value={birthDate} />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="col-md-6">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="address" className="not_empty">Where do you live?</label>
+                                                                            <input onChange={handleLocationChange} className="form-control" type="text" placeholder="Country, City" value={location} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="new_pass" className="not_empty">New Password</label>
-                                                                            <input id="new_pass" className="form-control" type="password" placeholder="Password" />
+                                                                            <input onChange={handlePasswordChange} id="new_pass" className="form-control" type="password" placeholder="Password" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="confirm_pass" className="not_empty">Confirm New Password</label>
-                                                                            <input id="confirm_pass" className="form-control" type="password" placeholder="Re-enter Password" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="facebook" className="not_empty">Facebook</label>
-                                                                            <input id="facebook" className="form-control" type="url" placeholder="Facebook URL" />
-                                                                            <p>Leave it empty to hide</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="twitter" className="not_empty">Twitter</label>
-                                                                            <input id="twitter" className="form-control" type="url" placeholder="Twitter URL" />
-                                                                            <p>Leave it empty to hide</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="google" className="not_empty">Google+</label>
-                                                                            <input id="google" className="form-control" type="url" placeholder="Google+ URL" />
-                                                                            <p>Leave it empty to hide</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="linkedIn" className="not_empty">LinkedIn</label>
-                                                                            <input id="linkedIn" className="form-control" type="url" placeholder="Linkedin URL" />
-                                                                            <p>Leave it empty to hide</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="youtube" className="not_empty">Youtube</label>
-                                                                            <input id="youtube" className="form-control" type="url" placeholder="Youtube URL" />
-                                                                            <p>Leave it empty to hide</p>
+                                                                            <input onChange={handleconfirmPasswordChange} id="confirm_pass" className="form-control" type="password" placeholder="Re-enter Password" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="bio" className="not_empty">About Author</label>
-                                                                            <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Describe yourself"></textarea>
+                                                                            <label htmlFor="bio" className="not_empty">About Youself</label>
+                                                                            <textarea onChange={handleAboutChange} className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Describe yourself">{about}</textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 {/*<!--ends social info .row-->*/}
-                                                                <button type="submit" className="btn btn-primary" id="update_user_profile">Save Changes</button>
+                                                                <button onClick={handleSubmit} type="submit" className="btn bg-hb-orange bg-hb-dark-hover text-white" id="update_user_profile">Save Changes</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -279,11 +339,11 @@ class AuthDeshbord extends Component {
                <Footer />
             </Fragment>
         )
-    }
 }
 const mapStateToProps = state => {
     return {
         user: state.userAuth.user,
+        isAuthenticated: state.userAuth.isAuthenticated,
         list: state.list,
         login : state.login,
         logo: state.logo
@@ -291,7 +351,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProp = dispatch => {
     return {
-        logOutdata : (login) => dispatch(LogOut(login))
+        logOut : () => dispatch(LogOut())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProp)(AuthDeshbord);

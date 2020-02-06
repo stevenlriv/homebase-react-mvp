@@ -54,7 +54,6 @@ export class Footer extends Component {
                                         <h2 className="widget-title">Company</h2>
                                         <ul className="list-unstyled">
                                           <li className="page-item"><NavLink to="/about">About Us</NavLink></li>
-                                          <li className="page-item"><NavLink to="/membership">Membership</NavLink></li>
                                           <li className="page-item"><NavLink to="/for-owners">For Owners</NavLink></li>
                                         </ul>
                                     </div>

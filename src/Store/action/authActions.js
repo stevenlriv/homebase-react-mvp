@@ -30,7 +30,8 @@ export const verifyAuth = () => dispatch => {
           // Data from Firestore user auth
           let userAuth = {
             userId: user.uid,
-            email: user.email
+            email: user.email,
+            joined: user.metadata.creationTime,
           };
 
           let userData = doc.data();

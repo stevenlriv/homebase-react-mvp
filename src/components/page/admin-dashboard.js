@@ -17,7 +17,7 @@ class AdminDashbord extends Component {
         if( user.userData.type != "admin" ) return <Redirect to="/my-homebase"  />;
 
         const logdIn = () => {
-            return this.props.isAuthenticated
+            return this.props.isAuthenticated;
         }
         const light = this.props.logo[0].light;
 

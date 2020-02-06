@@ -26,7 +26,7 @@ const Contact = (props) => {
                 <div className="row">
                     <div className="col-lg-12 text-center">
                       <p>We’re available 24/7 to help you become a member or answer any questions you may have.</p>
-                      <p className="font-weight-bold"><i className="la la-phone"></i> &nbsp;&nbsp; 910-257-6628</p>
+                      {/*<p className="font-weight-bold"><i className="la la-phone"></i> &nbsp;&nbsp; 910-257-6628</p>*/}
                       <p className="font-weight-bold"><i className="la la-envelope"></i> &nbsp;&nbsp; hello@renthomebase.com</p>
                     </div>
                 </div>
