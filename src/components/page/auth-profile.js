@@ -67,7 +67,7 @@ class AuthProfile extends Component {
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
                                         <div className="atbd_listing_meta" style={{border: "none"}}>
-                                            <NavLink to="/my-homebase#profile" className="atbd_meta atbd_listing_rating">Edit Profile</NavLink>
+                                            <NavLink to="/edit-profile" className="atbd_meta atbd_listing_rating">Edit Profile</NavLink>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_meta -->*/}
                                 </div>{/*<!-- ends: .atbd_auhor_profile_area -->*/}

@@ -19,18 +19,20 @@ const AllCategoris = (props) => {
           </section>
           {/* Header section end */}
 
-            <section className="section-padding-1_7 border-bottom">
-              <SectionTitle
-                title="Choose your city"
-                content="" />
+          {/*<CardCategoryGrid4 />*/}
 
+            <section className="faq-wrapper section-padding border-bottom">
                 <div className="container">
+                    <SectionTitle
+                    title="Choose your city"
+                    content="" />
 
                     <div className="row">
-                        <CardCategoryGrid4 />
+                      <CardCategoryGrid4 />
                     </div>
                 </div>
             </section>
+
            <Footer />
         </Fragment>
     )

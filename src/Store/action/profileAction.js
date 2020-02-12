@@ -1,43 +1,61 @@
 import { myFirebase, db } from "../firebase/firebase";
 import * as actionTypes from './actionTypes';
-import { createUserDocument } from "../firebase/createUserDocument";
+import {
+    softUpdateUserDocument,
+    softUpdateUserImage
+  } from "../firebase/softUpdateUserDocument";
 
-export const signUpEmail = (fullName, email, password, confirmPassword) => dispatch => {
+export const updateProfile = (userId,
+                                  fullName       = '',
+                                  aboutMe        = '',
+                                  birthDate      = '',
+                                  linkedIn       = '',
+                                  location       = '',
+                                  phoneNumber    = '') => {
 
-  if( fullName == '' || email == '' || password == '' ) return;
+  myFirebase.auth().onAuthStateChanged(user => {
 
-  // Password must be double check
-  if( password != confirmPassword ) return;
+    //We update the user document only if the logged in id match the given id
+    if( user.uid == userId ) {
 
-  // Password needs to be more than 8 characters
-  //if( password.length < 8 ) return;
+      softUpdateUserDocument(user.uid,
+                              fullName,
+                              aboutMe,
+                              birthDate,
+                              linkedIn,
+                              location,
+                              phoneNumber);
 
-  dispatch({
-      type: actionTypes.SIGNUP_REQUEST,
+                              setTimeout(
+                                function(){
+                                  window.location.reload(true);
+                                }, 2000);
+      return true;
+    }
+
+    return false;
+
   });
+};
 
-  myFirebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(user => {
+export const updateProfilePicture = (userId, profilePicture = '') => {
 
-      dispatch({
-          type: actionTypes.SIGNUP_SUCCESS,
-          user
-      });
+  myFirebase.auth().onAuthStateChanged(user => {
 
-      //You will need to create a new document for the user in the database
-      //Include its full name
-      const userId = user.user.uid;
+    //We update the user document only if the logged in id match the given id
+    if( user.uid == userId ) {
 
-      createUserDocument(userId, fullName);
+      softUpdateUserImage(user.uid, profilePicture);
 
-    })
-    .catch(error => {
-      //Do something with the error if you want!
-      dispatch({
-          type: actionTypes.SIGNUP_FAILURE,
-          error
-      });
-    });
+      setTimeout(
+        function(){
+          window.location.reload(true);
+        }, 2000);
+
+      return true;
+    }
+
+    return false;
+
+  });
 };

@@ -58,7 +58,7 @@ class Header extends Component {
                                                                 <div className="author-info">
                                                                     <a href="#" className="author-avatar">
 
-                                                                            <img src="./assets/img/review-author-thumb.jpg" width="50px" height="50px" alt="AuthorImage" className="rounded-circle" />
+                                                                            <img src="/assets/img/review-author-thumb.jpg" width="50px" height="50px" alt="AuthorImage" className="rounded-circle" />
                                                                     </a>
                                                                     <ul className="list-unstyled">
                                                                       <li><NavLink to="/profile">My Profile</NavLink></li>

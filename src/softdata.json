@@ -351,8 +351,8 @@
 
     "logo": [
         {
-            "light": "./assets/img/logo-wt.png",
-            "dark": "./assets/img/logo-org.png"
+            "light": "/assets/img/logo-wt.png",
+            "dark": "/assets/img/logo-org.png"
         }
     ]
 

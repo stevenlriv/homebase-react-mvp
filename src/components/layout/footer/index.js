@@ -31,7 +31,7 @@ export class Footer extends Component {
 
                                 <div className="col-lg-4 col-sm-6">
                                   <div className="widget widget_text">
-                                    <h2 className="widget-title"><NavLink to="/" className="footer-logo"><img src="./assets/img/logo-org.png" alt="" /></NavLink></h2>
+                                    <h2 className="widget-title"><NavLink to="/" className="footer-logo"><img src="/assets/img/logo-org.png" alt="" /></NavLink></h2>
                                     <div className="textwidget">
                                         <p>Homebase is a network of fully furnished and ready to move homes.</p>
                                     </div>
@@ -42,19 +42,19 @@ export class Footer extends Component {
                                     <div className="widget widget_pages">
                                         <h2 className="widget-title">Support</h2>
                                         <ul className="list-unstyled">
-                                            <li className="page-item"><NavLink to="/contact">Contact</NavLink></li>
-                                            <li className="page-item"><NavLink to="/privacy">Privacy</NavLink></li>
-                                            <li className="page-item"><NavLink to="/terms">Terms</NavLink></li>
                                             <li className="page-item"><NavLink to="/faqs">FAQ</NavLink></li>
+                                            <li className="page-item"><NavLink to="/contact">Contact</NavLink></li>
+                                            <li className="page-item"><NavLink to="/for-owners">For Owners</NavLink></li>
                                         </ul>
                                     </div>
                                 </div>{/* ends: .col-lg-3 */}
                                 <div className="col-lg-3 d-flex justify-content-lg-center  col-sm-6">
                                     <div className="widget widget_pages">
-                                        <h2 className="widget-title">Company</h2>
+                                        <h2 className="widget-title">Legal</h2>
                                         <ul className="list-unstyled">
-                                          <li className="page-item"><NavLink to="/about">About Us</NavLink></li>
-                                          <li className="page-item"><NavLink to="/for-owners">For Owners</NavLink></li>
+                                          {/*<li className="page-item"><NavLink to="/about">About Us</NavLink></li>*/}
+                                          <li className="page-item"><NavLink to="/privacy">Privacy</NavLink></li>
+                                          <li className="page-item"><NavLink to="/terms">Terms</NavLink></li>
                                         </ul>
                                     </div>
                                 </div>{/* ends: .col-lg-3 */}

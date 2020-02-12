@@ -260,3 +260,63 @@ export class ContentBlockLiving extends Component {
         )
     }
 }
+
+export class ContentBlockForOwners extends Component {
+
+    render() {
+        return (
+            <Fragment>
+                <section className="about-contents section-padding bg-hb">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12 contents-wrapper">
+                                <div className="contents">
+                                    <div className="row align-items-center">
+                                      <div className="col-lg-12">
+                                            <h1>Homebase In A Nutshell</h1>
+                                            <p>We find customers across multiple channels and vet them to make sure they are the right tenant for the property. We perform all tours and showings and if needed we provide financial help through partners so you can completely furnish your place. Did we mention that we also perform almost all of the property maintenance?</p>
+                                      </div>
+                                    </div>
+                                </div>{/*<!-- ends: .contents -->*/}
+                                <div className="contents">
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-12">
+                                            <h1>How does it works?</h1>
+                                            <ul className="list-unstyled list-features p-top-15">
+                                                <li>
+                                                    <div className="list-count"><span style={{backgroundColor: "white"}}>1</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Due diligence and our Offer within 3-12 hours</h4>
+                                                        <p>After you fill out our property submission application, we will do our homework, verify all existing property photos, floorplans and public records.</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-count"><span style={{backgroundColor: "white"}}>2</span></div>
+                                                    <div className="list-content">
+                                                        <h4>On-site visit</h4>
+                                                        <p>Our professional team will visit your property to preform measurements, and a physical inspection of the property. This is also a great way for you as a landlord to meet a representative of Homebase, and ask questions about us.</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="list-count"><span style={{backgroundColor: "white"}}>3</span></div>
+                                                    <div className="list-content">
+                                                        <h4>Sign and execute the agreement, furnish and then launch.</h4>
+                                                        <p>Homebase will send you an agreement to be signed, which can be done remotely or in person. After picking up a copy of the key and getting access to the property Homebase will ship furniture (if applicable) and launch the new location!</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {/*<div className="col-lg-6 offset-lg-1 text-right col-sm-6 mt-5 mt-md-0">
+                                            <img src="./assets/img/about-img2.png" alt="" />
+                                        </div>*/}
+                                    </div>
+                                </div>{/*<!-- ends: .contents -->*/}
+                            </div>{/*<!-- ends: .content-block -->*/}
+                        </div>
+                    </div>
+                </section>
+
+            </Fragment>
+        )
+    }
+}

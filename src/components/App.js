@@ -12,14 +12,17 @@ import Category from './page/all-categoris';
 import Location from './page/all-location';
 import Pricing from './page/pricing-plan';
 import Faq from './page/faq';
+import CitiesNotAvailable from './page/cities-notavailable';
 import Privacy from './page/privacy';
 import Terms from './page/terms';
 import About from './page/about';
+import ForOwners from './page/for-owners';
 import Living from './page/living';
 import Membership from './page/membership';
 import Contact from './page/contact';
 import AuthProfile from './page/auth-profile';
 import AuthDeshbord from './page/auth-deshbord';
+import AuthDeshbordProfile from './page/edit-profile';
 import AdminDashbord from './page/admin-dashboard';
 import CheckoutBasic from './page/checkout-basic';
 import Invoice from './page/invoice';
@@ -32,6 +35,11 @@ function App(props) {
   return (
     <Router basename={process.env.PUBLIC_URL} >
         <Switch>
+        {/* To be removed or edited */}
+        <Route path = '/all-listings-grid' component = { AllListingGrid } />
+        <Route path = '/all-locations' component = { Location } />
+        <Route path = '/pricing-plans' component = { Pricing } />
+
           <Route exact path = '/' component = { Index } />
           <Route path = '/all-listings-list' component = { AllListingList } />
           <Route path = '/listing-details:id' component = { ListingDetails } />
@@ -41,15 +49,15 @@ function App(props) {
           <Route path = '/living-in-homebase' component = { Living } />
           <Route path = '/terms' component = { Terms } />
           <Route path = '/privacy' component = { Privacy } />
-          <Route path = '/about' component = { About } />
+          {/*<Route path = '/about' component = { About } />*/}
+          <Route path = '/for-owners' component = { ForOwners } />
           <Route path = '/contact' component = { Contact } />
           <Route path = '/sign-up' component = { SignUp } />
           <Route path = '/recover-password' component = { RecoverPassword } />
 
-          {/* To be removed or edited */}
-          <Route path = '/all-listings-grid' component = { AllListingGrid } />
-          <Route path = '/all-locations' component = { Location } />
-          <Route path = '/pricing-plans' component = { Pricing } />
+          {/* Cities Router */}
+          <Route path = '/cities/san-francisco' component = { CitiesNotAvailable } />
+          <Route path = '/cities/santiago' component = { CitiesNotAvailable } />
 
           {/* Only Access to a log-in user */}
           <ProtectedRoute
@@ -72,6 +80,14 @@ function App(props) {
             exact
             path="/my-homebase"
             component={AuthDeshbord}
+            isAuthenticated={isAuthenticated}
+            isVerifying={isVerifying}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/edit-profile"
+            component={AuthDeshbordProfile}
             isAuthenticated={isAuthenticated}
             isVerifying={isVerifying}
           />

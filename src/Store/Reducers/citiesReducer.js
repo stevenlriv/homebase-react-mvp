@@ -15,7 +15,7 @@ const initState = [
       city: 'Santiago, Chile',
       state: '',
       img: './assets/img/cities/chile.jpg',
-      uri: '/cities/san-francisco',
+      uri: '/cities/santiago',
     }
 ];
 

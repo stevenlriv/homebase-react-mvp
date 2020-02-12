@@ -196,3 +196,33 @@ export class BreadcrumbLiving extends Component {
         )
     }
 }
+
+export class BreadcrumbForOwners extends Component {
+
+    render() {
+
+        return (
+            <Fragment>
+                <div className="about-intro content_above">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-5 col-md-6">
+                                <h1 style={{color: 'black'}}>Renting with Homebase is more profitable and stress free.</h1>
+                                <p style={{fontSize: '18px'}}>Become a Homebase landlord and enjoy all the benefits of our unique property management approach, with no chores, or hassles.</p>
+                                <br />
+                                <h2 style={{color: '#d66d2a'}}>15-60% premiums on rent</h2>
+                                <br />
+                                <br />
+
+                                    <NavLink to="/contact" className="btn bg-dark-hb">Start Today!</NavLink>
+                            </div>
+                            <div className="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
+                                <img src="./assets/img/membership.jpg" width="540" height="478" alt="" className="svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        )
+    }
+}
