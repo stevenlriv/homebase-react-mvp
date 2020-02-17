@@ -1,6 +1,6 @@
 import { db } from "../firebase/firebase";
 
-export const createUserDocument = (userId,
+export const createListingDocument = (userId,
                                   fullName       = '',
                                   aboutMe        = '',
                                   birthDate      = '',
@@ -20,7 +20,6 @@ export const createUserDocument = (userId,
       currentHomebase: '',
       fullName: fullName,
       gender: gender,
-      homebaseLeaseEnding: '',
       languages: languages,
       linkedIn: linkedIn,
       location: location,

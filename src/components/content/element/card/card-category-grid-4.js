@@ -9,8 +9,8 @@ class CategoryCardGrid4 extends Component {
         return (
             <Fragment>
             {
-                Object.values(cities).slice(0, 6).map((value, key) => {
-                    const { city, state, img, uri } = value;
+                Object.values(cities).map((value, key) => {
+                    const { city, state, img, uri, tagLine } = value;
                     return (
                         <div className="col-lg-4 col-sm-6" key={key}>
                             <div className="category-single category--img">
@@ -19,7 +19,7 @@ class CategoryCardGrid4 extends Component {
                                     <figcaption className="overlay-bg">
                                         <NavLink to={uri} className="cat-box">
                                             <div>
-                                                <h4 className="cat-name">{city}</h4>
+                                                <h4 className="cat-name">{tagLine}</h4>
                                                 {/*<span className="badge badge-pill badge-success">{list} Listings</span>*/}
                                             </div>
                                         </NavLink>

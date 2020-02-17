@@ -1,20 +1,26 @@
 const initState = [
     {
-      city: 'San Juan, Puerto Rico',
+      tagLine: 'San Juan, Puerto Rico',
+      city: 'San Juan',
       state: 'PR',
-      img: './assets/img/cities/puerto-rico.jpg',
+      country: 'United States',
+      img: '/assets/img/cities/puerto-rico.jpg',
       uri: '/cities/san-juan',
     },
     {
-      city: 'San Francisco, California',
+      tagLine: 'San Francisco, California',
+      city: 'San Francisco',
       state: 'CA',
-      img: './assets/img/cities/san-francisco.jpg',
+      country: 'United States',
+      img: '/assets/img/cities/san-francisco.jpg',
       uri: '/cities/san-francisco',
     },
     {
-      city: 'Santiago, Chile',
+      tagLine: 'Santiago, Chile',
+      city: 'Santiago',
       state: '',
-      img: './assets/img/cities/chile.jpg',
+      country: 'Chile',
+      img: '/assets/img/cities/chile.jpg',
       uri: '/cities/santiago',
     }
 ];

@@ -14,6 +14,9 @@ const noAction = e => e.preventDefault();
 function AuthDeshbord(props) {
         const user = props.user;
 
+        // Verify if the user is an admin, if not reddirect away
+        if( user.userData.type == "admin" ) return <Redirect to="/admin-dashboard"  />;
+
         const logdIn = () => {
             return props.isAuthenticated;
         }

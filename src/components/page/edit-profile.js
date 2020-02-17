@@ -26,6 +26,7 @@ function AuthDeshbordProfile(props) {
         const [about, setAbout] = useState(user.userData.aboutMe);
         let [formError, setError] = useState('');
         let [formSucc, setSuccess] = useState('');
+        let [uploadMessage, setUpload] = useState('');
 
         // Image State form fields
         const allInputs = {imgUrl: user.userData.profilePicture};
@@ -84,6 +85,8 @@ function AuthDeshbordProfile(props) {
         const handleImageAsFile = (e) => {
           const image = e.target.files[0];
           setImageAsFile(imageFile => (image));
+
+          setUpload('Great! Now click on "Upload New Image"');
         }
 
         const handleFireBaseUpload = e => {
@@ -114,6 +117,7 @@ function AuthDeshbordProfile(props) {
 
                  // Update firebase profile url
                  updateProfilePicture(user.userAuth.userId, fireBaseUrl);
+                 setUpload('');
 
                })
             })
@@ -239,7 +243,11 @@ function AuthDeshbordProfile(props) {
                                                       )
                                                   }
                                                     <div className="image-info">
-
+                                                      {uploadMessage && (
+                                                        <span className="text-success">
+                                                          {uploadMessage}
+                                                        </span>
+                                                      )}
                                                     </div>
 
                                                     <form onSubmit={handleFireBaseUpload}>
