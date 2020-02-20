@@ -79,6 +79,8 @@ function AuthDeshbordProfile(props) {
 
         // Handle Image Upload
         //Random number to add to image Name
+        const d = new Date();
+        const storageURL = `/images/listings/${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
         const rnImage = Math.floor(1000 + Math.random() * 90000);
 
         //console.log(imageAsFile);
@@ -98,7 +100,10 @@ function AuthDeshbordProfile(props) {
             //console.log(`not an image, the image file is a ${typeof(imageAsFile)}`);
           }
 
-          const uploadTask = storage.ref(`/profile-pictures/${rnImage}-${imageAsFile.name}`).put(imageAsFile);
+          const uploadTask = storage.ref(`${storageURL}/${rnImage}-${imageAsFile.name}`).put(imageAsFile);
+
+          // Feedback Message
+          setUpload('Uploading....');
 
           //initiates the firebase side uploading
           uploadTask.on('state_changed',
@@ -111,13 +116,12 @@ function AuthDeshbordProfile(props) {
             }, () => {
               // gets the functions from storage refences the image storage in firebase by the children
               // gets the download url then sets the image from firebase as the value for the imgUrl key:
-              storage.ref('profile-pictures').child(`${rnImage}-${imageAsFile.name}`).getDownloadURL()
+              storage.ref(storageURL).child(`${rnImage}-${imageAsFile.name}`).getDownloadURL()
                .then(fireBaseUrl => {
                  setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}));
 
                  // Update firebase profile url
                  updateProfilePicture(user.userAuth.userId, fireBaseUrl);
-                 setUpload('');
 
                })
             })
