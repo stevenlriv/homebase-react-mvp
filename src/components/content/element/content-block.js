@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-const noAction = e => e.preventDefault();
 export class ContentBlockHome extends Component {
 
     render() {
@@ -270,7 +268,7 @@ export class ContentBlockForOwners extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 contents-wrapper">
-                                <div className="contents">
+                                <div className="contents" style={{borderColor: '#cccccc'}}>
                                     <div className="row align-items-center">
                                       <div className="col-lg-12">
                                             <h1>Homebase In A Nutshell</h1>

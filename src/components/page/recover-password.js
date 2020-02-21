@@ -1,14 +1,10 @@
-import React, { useState, setState, Fragment } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import React, { useState, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
-import Map1 from '../content/element/map';
 import { SectionTitle } from '../content/element/section-title';
-import { signUpEmail } from '../../Store/action/signupAction';
 import { myFirebase } from "../../Store/firebase/firebase";
-import $ from 'jquery';
 
 function RecoverPassword(props) {
 
@@ -27,7 +23,7 @@ function RecoverPassword(props) {
     //To prevent modal reload after submission
     e.preventDefault();
 
-    if ( email == '' ) {
+    if ( email === '' ) {
       setError('Please enter your email address.');
       return;
     }
@@ -46,7 +42,7 @@ function RecoverPassword(props) {
 
   // If login send him to his homebase
   if( isAuthenticated ) { return <Redirect to="/my-homebase"  /> }
-  
+
         return (
             <Fragment>
                 {/* Header section start */}

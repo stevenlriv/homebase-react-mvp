@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const noAction = e => e.preventDefault();
@@ -23,7 +22,7 @@ class AdvSearch extends Component {
                                             <select className="search_fields" id="at_biz_dir-category">
                                             <option value>Choose a City</option>
                                             {
-                                              
+
                                             }
                                             </select>
                                         </div>

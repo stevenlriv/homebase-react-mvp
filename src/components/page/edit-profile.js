@@ -1,10 +1,9 @@
-import React, {useState, setState, Fragment, Component} from 'react';
+import React, {useState, Fragment} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import { LogOut } from '../../Store/action/logoutAction';
 import { updateProfile, updateProfilePicture } from '../../Store/action/profileAction';
 import {storage} from "../../Store/firebase/firebase";
@@ -57,14 +56,6 @@ function AuthDeshbordProfile(props) {
           setLocation(target.value);
         };
 
-        const handlePasswordChange = ({ target }) => {
-          setPassword(target.value);
-        };
-
-        const handleconfirmPasswordChange = ({ target }) => {
-          setconfirmPassword(target.value);
-        };
-
         const handleAboutChange = ({ target }) => {
           setAbout(target.value);
         };
@@ -80,7 +71,7 @@ function AuthDeshbordProfile(props) {
         // Handle Image Upload
         //Random number to add to image Name
         const d = new Date();
-        const storageURL = `/images/listings/${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
+        const storageURL = `/images/profiles/${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
         const rnImage = Math.floor(1000 + Math.random() * 90000);
 
         //console.log(imageAsFile);
@@ -133,32 +124,39 @@ function AuthDeshbordProfile(props) {
           //To prevent modal reload after submission
           e.preventDefault();
 
-          if ( fullName == '' ) {
+          const fmMsg = document.getElementById("form-message");
+
+          if ( fullName === '' ) {
             setError('Please enter your full name.');
+            fmMsg.scrollIntoView();
             return;
           }
 
-          if ( email == '' ) {
+          if ( email === '' ) {
             setError('An email address is required.');
+            fmMsg.scrollIntoView();
             return;
           }
 
           // If the user wants to change the passwod
-          if ( password != '' ) {
+          if ( password !== '' ) {
 
             // Password needs to be more than 8 characters
             if( password.length < 8 ) {
               setError('Your password needs to be 8 characters or more.');
+              fmMsg.scrollIntoView();
               return;
             }
 
-            if ( confirmPassword == '' ) {
+            if ( confirmPassword === '' ) {
               setError('Please confirm your password.');
+              fmMsg.scrollIntoView();
               return;
             }
 
-            if ( password != confirmPassword ) {
+            if ( password !== confirmPassword ) {
               setError('Your passwords does not match.');
+              fmMsg.scrollIntoView();
               return;
             }
 
@@ -172,7 +170,9 @@ function AuthDeshbordProfile(props) {
                                   location,
                                   phone);
 
+          setError(''); // CLean errors
           setSuccess('Your profile, was updated successfully.');
+          fmMsg.scrollIntoView();
 
           /*
           if ( signUpError ) {
@@ -187,7 +187,7 @@ function AuthDeshbordProfile(props) {
         return (
             <Fragment>
                 {/* Header section start */}
-                <section className="header-breadcrumb bgimage overlay overlay--dark">
+                <section className="header-breadcrumb bgimage overlay overlay--dark" id="form-message">
                     <div className="mainmenu-wrapper">
                         <Header logo={light} class="menu--light" />
                     </div>
@@ -240,7 +240,7 @@ function AuthDeshbordProfile(props) {
                                             <div className="col-lg-3 col-md-4 mb-5 mb-lg-0">
                                                 <div className="user_pro_img_area">
                                                 {
-                                                    imageAsUrl.imgUrl == '' ? (
+                                                    imageAsUrl.imgUrl === '' ? (
                                                         <img src="/assets/img/author-profile.jpg" width="120px" height="120px" alt="AuthorImage" />
                                                       ) : (
                                                         <img src={imageAsUrl.imgUrl} width="120px" height="120px" alt="AuthorImage" />

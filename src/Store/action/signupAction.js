@@ -1,13 +1,13 @@
-import { myFirebase, db } from "../firebase/firebase";
+import { myFirebase } from "../firebase/firebase";
 import * as actionTypes from './actionTypes';
 import { createUserDocument } from "../firebase/createUserDocument";
 
 export const signUpEmail = (fullName, email, password, confirmPassword) => dispatch => {
 
-  if( fullName == '' || email == '' || password == '' ) return;
+  if( fullName === '' || email === '' || password === '' ) return;
 
   // Password must be double check
-  if( password != confirmPassword ) return;
+  if( password !== confirmPassword ) return;
 
   // Password needs to be more than 8 characters
   //if( password.length < 8 ) return;

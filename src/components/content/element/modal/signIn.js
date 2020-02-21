@@ -1,7 +1,6 @@
-import React, { useState, setState, Fragment } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import React, { useState, Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useFormik } from 'formik';
 import { loginEmail } from '../../../../Store/action/loginAction';
 import $ from 'jquery';
 
@@ -29,12 +28,12 @@ function Login(props) {
     //To prevent modal reload after submission
     e.preventDefault();
 
-    if ( email == '' ) {
+    if ( email === '' ) {
       setError('Please enter your email address.');
       return;
     }
 
-    if ( password == '' ) {
+    if ( password === '' ) {
       setError('Please enter your password.');
       return;
     }

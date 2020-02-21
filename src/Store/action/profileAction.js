@@ -1,5 +1,4 @@
-import { myFirebase, db } from "../firebase/firebase";
-import * as actionTypes from './actionTypes';
+import { myFirebase } from "../firebase/firebase";
 import {
     softUpdateUserDocument,
     softUpdateUserImage
@@ -16,7 +15,7 @@ export const updateProfile = (userId,
   myFirebase.auth().onAuthStateChanged(user => {
 
     //We update the user document only if the logged in id match the given id
-    if( user.uid == userId ) {
+    if( user.uid === userId ) {
 
       softUpdateUserDocument(user.uid,
                               fullName,
@@ -43,7 +42,7 @@ export const updateProfilePicture = (userId, profilePicture = '') => {
   myFirebase.auth().onAuthStateChanged(user => {
 
     //We update the user document only if the logged in id match the given id
-    if( user.uid == userId ) {
+    if( user.uid === userId ) {
 
       softUpdateUserImage(user.uid, profilePicture);
 

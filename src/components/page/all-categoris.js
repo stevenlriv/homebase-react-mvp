@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import CardCategoryGrid4 from '../content/element/card/card-category-grid-4';
 import { SectionTitle } from '../content/element/section-title';
 import { connect } from 'react-redux';

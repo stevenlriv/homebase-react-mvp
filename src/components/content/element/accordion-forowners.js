@@ -28,16 +28,6 @@ export class Accordion extends Component {
 class Accordion2 extends Component {
 
     render() {
-        const cities = () => {
-          let string = '';
-          const actualPlaces = this.props.cities;
-          actualPlaces.forEach(
-            element => {
-              string = string + `${element.city} ${element.state}, `;
-            }
-          );
-          return string;
-        };
 
 
         return (
@@ -77,7 +67,6 @@ class Accordion2 extends Component {
 }
 const mapStateToProps = state => {
     return {
-        cities: state.cities
     }
 }
 

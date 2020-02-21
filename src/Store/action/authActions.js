@@ -1,13 +1,14 @@
 import { myFirebase, db } from '../firebase/firebase';
 import * as actionTypes from './actionTypes';
 
-//This is proccess on configureStore.js
-
 export const verifyAuth = () => dispatch => {
   dispatch({
       type: actionTypes.VERIFY_REQUEST,
   });
+
   myFirebase.auth().onAuthStateChanged(user => {
+
+    // User is already logd in so we don't need to reload the documents again
     if (user !== null) {
 
       // We let the app know that we are log in
@@ -18,14 +19,13 @@ export const verifyAuth = () => dispatch => {
 
     }
 
+    /////////////////////////////////////////////////////////////
     //We update add the user documents to redux
     // Get the user document
     let userRef = db.collection("users").doc(user.uid);
-    let getDoc = userRef.get()
+    userRef.get()
       .then(doc => {
-        if (!doc.exists) {
-          //console.log('No such document!');
-        } else {
+        if (doc.exists) {
           //console.log('Document data:', doc.data());
           // Data from Firestore user auth
           let userAuth = {
@@ -42,9 +42,8 @@ export const verifyAuth = () => dispatch => {
         }
     })
     .catch(err => {
-      //console.log('Error getting document', err);
     });
-
+    ////////////////////////////////////////////////
 
   });
 };

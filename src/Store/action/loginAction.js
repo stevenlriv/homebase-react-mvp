@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 
 export const loginEmail = (email, password) => dispatch => {
 
-  if( email == '' || password == '' ) return;
+  if( email === '' || password === '' ) return;
 
   dispatch({
       type: actionTypes.LOGIN_REQUEST,

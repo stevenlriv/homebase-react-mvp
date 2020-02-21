@@ -1,13 +1,23 @@
-import { myFirebase, db } from "../firebase/firebase";
+import { myFirebase } from "../firebase/firebase";
 import * as actionTypes from './actionTypes';
 import { createListingDocument } from "../firebase/createListingDocument";
 
-export const newListingDocument = (userId,
+export const newListingDocument = (
+                                  userId,
                                   airConditioning         = '',
                                   bookTourLink            = '',
-                                  checkInDescription      = '',
-                                  checkInFirstImg         = '',
-                                  checkInLastImg          = '',
+                                  checkInDescription1     = '',
+                                  checkInDescription2     = '',
+                                  checkInDescription3     = '',
+                                  checkInDescription4     = '',
+                                  checkInDescription5     = '',
+                                  checkInDescription6     = '',
+                                  checkInImg1             = '',
+                                  checkInImg2             = '',
+                                  checkInImg3             = '',
+                                  checkInImg4             = '',
+                                  checkInImg5             = '',
+                                  checkInImg6             = '',
                                   checkInPinCode          = '',
                                   citiesCategory          = '',
                                   country                 = '',
@@ -44,6 +54,7 @@ export const newListingDocument = (userId,
                                   listingImg6             = '',
                                   listingImg7             = '',
                                   listingImg8             = '',
+                                  availabilityDate        = '',
                                 ) => {
 
   myFirebase.auth().onAuthStateChanged(user => {
@@ -56,9 +67,18 @@ export const newListingDocument = (userId,
         user.uid,
         airConditioning,
         bookTourLink,
-        checkInDescription,
-        checkInFirstImg,
-        checkInLastImg,
+        checkInDescription1,
+        checkInDescription2,
+        checkInDescription3,
+        checkInDescription4,
+        checkInDescription5,
+        checkInDescription6,
+        checkInImg1,
+        checkInImg2,
+        checkInImg3,
+        checkInImg4,
+        checkInImg5,
+        checkInImg6,
         checkInPinCode,
         citiesCategory,
         country,
@@ -95,12 +115,13 @@ export const newListingDocument = (userId,
         listingImg6,
         listingImg7,
         listingImg8,
+        availabilityDate
       );
 
-                              setTimeout(
+                              /*setTimeout(
                                 function(){
                                   window.location.reload(true);
-                                }, 2000);
+                                }, 2000);*/
       return true;
     }
 

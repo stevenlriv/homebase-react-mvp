@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 class CategoryCardGrid4 extends Component {
     render() {
-        const { category, cities } = this.props;
+        const { cities } = this.props;
 
         return (
             <Fragment>
             {
                 Object.values(cities).map((value, key) => {
-                    const { city, state, img, uri, tagLine } = value;
+                    const { img, uri, tagLine } = value;
                     return (
                         <div className="col-lg-4 col-sm-6" key={key}>
                             <div className="category-single category--img">

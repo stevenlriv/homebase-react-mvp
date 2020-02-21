@@ -4,9 +4,6 @@ import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
-
-const noAction = e => e.preventDefault();
 
 class AuthProfile extends Component {
     render () {
@@ -32,9 +29,7 @@ class AuthProfile extends Component {
         let joinedDate = `${month[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 
         const light = this.props.logo[0].light;
-        const logdIn = () => {
-            return this.props.login
-        }
+
         return (
             <Fragment>
                 {/* Header section start */}
@@ -54,7 +49,7 @@ class AuthProfile extends Component {
                                 <div className="atbd_auhor_profile_area">
                                     <div className="atbd_author_avatar">
                                     {
-                                        user.userData.profilePicture == '' ? (
+                                        user.userData.profilePicture === '' ? (
                                             <img src="./assets/img/author-profile.jpg" width="120px" height="120px" alt="AuthorImage" />
                                           ) : (
                                             <img src={user.userData.profilePicture} width="120px" height="120px" alt="AuthorImage" />
@@ -85,7 +80,7 @@ class AuthProfile extends Component {
                                         <div className="atbdb_content_module_contents">
 
                                             {
-                                                user.userData.aboutMe != '' ? (
+                                                user.userData.aboutMe !== '' ? (
                                                   <p>{user.userData.aboutMe}</p>
                                                   ) : (
                                                   <p>Add a bio on your homebase dashboard.</p>
@@ -94,7 +89,7 @@ class AuthProfile extends Component {
 
                                               <br />
                                               {
-                                                  user.userData.birthDate != '' || user.userData.gender != '' || user.userData.location != '' || user.userData.school != '' || user.userData.work != '' ? (
+                                                  user.userData.birthDate !== '' || user.userData.gender !== '' || user.userData.location !== '' || user.userData.school !== '' || user.userData.work !== '' ? (
                                                     <h3>More details</h3>
                                                     ) : (
                                                       <span></span>
@@ -103,7 +98,7 @@ class AuthProfile extends Component {
                                               <br />
                                               <ul className="list-group list-group-flush">
                                                   {
-                                                      user.userData.birthDate != '' ? (
+                                                      user.userData.birthDate !== '' ? (
                                                         <li className="list-group-item">
                                                             <span className="la la-birthday-cake"></span>&nbsp;&nbsp;&nbsp;
                                                             <span className="atbd_info">{user.userData.birthDate}</span>
@@ -113,46 +108,6 @@ class AuthProfile extends Component {
                                                         )
                                                   }
 
-                                                  {
-                                                      user.userData.gender != '' ? (
-                                                        <li className="list-group-item">
-                                                            <span className="la la-user"></span>&nbsp;&nbsp;&nbsp;
-                                                            <span className="atbd_info">{user.userData.gender}</span>
-                                                        </li>
-                                                        ) : (
-                                                          <span></span>
-                                                        )
-                                                  }
-                                                  {
-                                                      user.userData.location != '' ? (
-                                                        <li className="list-group-item">
-                                                            <span className="la la-map-marker"></span>&nbsp;&nbsp;&nbsp;
-                                                            <span className="atbd_info">{user.userData.location}</span>
-                                                        </li>
-                                                        ) : (
-                                                          <span></span>
-                                                        )
-                                                  }
-                                                  {
-                                                      user.userData.school != '' ? (
-                                                        <li className="list-group-item">
-                                                            <span className="la la-university"></span>&nbsp;&nbsp;&nbsp;
-                                                            <span className="atbd_info">{user.userData.school}</span>
-                                                        </li>
-                                                        ) : (
-                                                          <span></span>
-                                                        )
-                                                  }
-                                                  {
-                                                      user.userData.work != '' ? (
-                                                        <li className="list-group-item">
-                                                            <span className="la la-briefcase"></span>&nbsp;&nbsp;&nbsp;
-                                                            <span className="atbd_info">{user.userData.work}</span>
-                                                        </li>
-                                                        ) : (
-                                                          <span></span>
-                                                        )
-                                                  }
                                               </ul>
                                         </div>
                                     </div>
@@ -172,7 +127,7 @@ class AuthProfile extends Component {
                                               </li>
 
                                                 {
-                                                    user.userData.phoneNumber != '' ? (
+                                                    user.userData.phoneNumber !== '' ? (
                                                       <li>
                                                           <span className="la la-phone"></span>
                                                           <span className="atbd_info">{user.userData.phoneNumber}</span>
@@ -182,10 +137,10 @@ class AuthProfile extends Component {
                                                       )
                                                   }
                                                   {
-                                                      user.userData.linkedIn != '' ? (
+                                                      user.userData.linkedIn !== '' ? (
                                                         <li>
                                                             <span className="la la-linkedin"></span>
-                                                            <span className="atbd_info"><a href={user.userData.linkedIn} target="_blank">LinkedIn</a></span>
+                                                            <span className="atbd_info"><a href={user.userData.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
                                                         </li>
                                                         ) : (
                                                           <span></span>

@@ -8,7 +8,7 @@ import 'jquery-ui/themes/base/theme.css';
 import 'jquery-ui/themes/base/slider.css';
 import 'jquery-ui/ui/core';
 import 'jquery-ui/ui/widgets/slider';
-const noAction = e => e.preventDefault();
+
 class ListingList extends Component {
     state = {
         list: this.props.list,
@@ -34,7 +34,7 @@ class ListingList extends Component {
             $(".amount").text("$" + slider_range.slider("values", 0) + " - $" + slider_range.slider("values", 1));
         });
     }
-    
+
     render() {
         // sorting here
         const sort = [];
@@ -46,7 +46,7 @@ class ListingList extends Component {
 
         const sorting = (e) => {
             e.preventDefault();
-            
+
             switch (e.target.getAttribute('href')) {
                 case 'heigh':
                 this.setState({
@@ -153,7 +153,7 @@ class ListingList extends Component {
             const value = document.getElementById('amount1').innerHTML;
             const max   = value.split('-').pop().split('$').pop().trim();
             const min   = value.split('-').shift().split('$').pop().trim();
-            
+
             this.setState({
                 list: Object.values(this.props.list).filter(item1 => {
                     return item1.price >= min && item1.price <= max
@@ -185,9 +185,9 @@ class ListingList extends Component {
                                                 <a className="dropdown-item" onClick={sorting} href="a-z">A to Z ( title )</a>
                                                 <a className="dropdown-item" onClick={sorting} href="z-a">Z to A ( title )</a>
                                                 <a className="dropdown-item" onClick={sorting} href="new">Latest listings</a>
-                                                <a className="dropdown-item" onClick={sorting} href="old">Oldest listings</a>                                            
+                                                <a className="dropdown-item" onClick={sorting} href="old">Oldest listings</a>
                                                 <a className="dropdown-item" onClick={sorting} href="low">Price ( low to high )</a>
-                                                <a className="dropdown-item" onClick={sorting} href="heigh">Price ( high to low )</a>                                            
+                                                <a className="dropdown-item" onClick={sorting} href="heigh">Price ( high to low )</a>
                                             </div>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_listing_action_btn -->*/}
@@ -196,15 +196,15 @@ class ListingList extends Component {
 
                             <div className="col-lg-12 listing-items">
                                 <div className="row">
-                                    
+
                                     <div className="col-lg-4 order-lg-0 order-1 mt-5 mt-lg-0">
                                         <div className="listings-sidebar">
                                             <div className="search-area default-ad-search">
                                                 <form action="#">
                                                     <div className="form-group">
-                                                        <input type="text" 
-                                                            placeholder="What are you looking for?" 
-                                                            className="form-control" 
+                                                        <input type="text"
+                                                            placeholder="What are you looking for?"
+                                                            className="form-control"
                                                             onChange={search}
                                                         />
                                                     </div>{/*<!-- ends: .form-group -->*/}
@@ -216,7 +216,7 @@ class ListingList extends Component {
                                                                 {
                                                                     Object.values(this.props.list).map((value, key) => {
                                                                         return (
-                                                                            <option key={key} value={value.category}>{value.category}</option>                                                                
+                                                                            <option key={key} value={value.category}>{value.category}</option>
                                                                         )
                                                                     })
                                                                 }
@@ -237,7 +237,7 @@ class ListingList extends Component {
                                                                 <span>Price Range: </span>
                                                                 <span className="amount" id="amount1"></span>
                                                             </p>
-                                                            <div className="slider-range"></div>                                                                                                                    
+                                                            <div className="slider-range"></div>
                                                         </div>{/*<!-- ends: .price-range -->*/}
                                                     </div>{/*<!-- ends: .form-group -->*/}
 
@@ -435,7 +435,7 @@ class ListingList extends Component {
                                                 <ListingCardGrid12 list={this.state.list} />
                                             ) : (<div className="col-lg-12"><div className="alert alert-warning" role="alert">Data Not found!</div></div>)
                                         }
-                                            
+
                                         </div>
                                     </div>
 
@@ -443,7 +443,7 @@ class ListingList extends Component {
                             </div>
                         </div>
                     </div>
-                </section>               
+                </section>
             </Fragment>
         )
     }

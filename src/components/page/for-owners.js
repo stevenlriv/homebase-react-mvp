@@ -3,11 +3,8 @@ import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbForOwners } from '../content/element/breadcrumb';
 import { ContentBlockForOwners } from '../content/element/content-block';
-import { Counter } from '../content/element/counter';
 import TestimonialRealtors from '../content/element/carousel/testimonial-realtors';
 import { SectionTitle } from '../content/element/section-title';
-import ClientLogo from '../content/element/carousel/client-logo';
-import { Subscribe } from '../content/element/subscribe';
 import Accordion2 from '../content/element/accordion-forowners';
 import {connect} from 'react-redux';
 

@@ -14,7 +14,7 @@ class NavItem extends Component {
         if (!logdIn()) {
           return (
             <li className="dropdown has_dropdown d-xl-none">
-              <a href="#" className="access-link" data-toggle="modal" data-target="#login_modal">Sign In</a>
+              <a href="#sign" className="access-link" data-toggle="modal" data-target="#login_modal">Sign In</a>
             </li>
           )
         } else {

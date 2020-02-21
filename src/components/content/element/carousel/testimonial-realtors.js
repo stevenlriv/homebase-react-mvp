@@ -12,7 +12,6 @@ const options = {
 
 class TestimonialRealtors extends Component {
     render() {
-        const { tistimonial } = this.props;
         return (
             <Fragment>
                 <OwlCarousel options={options} className="testimonial-carousel owl-carousel" >
@@ -46,7 +45,6 @@ class TestimonialRealtors extends Component {
 }
 const mapStateToProps =  (state) => {
     return {
-        tistimonial : state.testimonial
     }
 }
 export default connect(mapStateToProps)(TestimonialRealtors)

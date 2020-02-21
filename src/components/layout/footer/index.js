@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogIn from '../../content/element/modal/signIn';
 import Register from '../../content/element/modal/signUp';
-const noAction = e => e.preventDefault();
 
 export class Footer extends Component {
 
@@ -62,8 +61,8 @@ export class Footer extends Component {
                                     <div className="widget widget_social">
                                         <h2 className="widget-title">Connect with Us</h2>
                                         <ul className="list-unstyled social-list">
-                                            <li><a href="https://facebook.com/renthomebase" target="_blank"><span className="facebook"><i className="fab fa-facebook-f" /></span> Facebook</a></li>
-                                            <li><a href="https://instagram.com/renthomebase" target="_blank"><span className="instagram"><i className="fab fa-instagram" /></span> Instagram</a></li>
+                                            <li><a href="https://facebook.com/renthomebase" target="_blank" rel="noopener noreferrer"><span className="facebook"><i className="fab fa-facebook-f" /></span> Facebook</a></li>
+                                            <li><a href="https://instagram.com/renthomebase" target="_blank" rel="noopener noreferrer"><span className="instagram"><i className="fab fa-instagram" /></span> Instagram</a></li>
                                             {/*
                                             <li><NavLink to="/gplus"><span className="gplus"><i className="fab fa-google-plus-g" /></span> Google+</NavLink></li>
                                             <li><NavLink to="/mail"><span className="mail"><i className="la la-envelope" /></span> Contact Support</NavLink></li>

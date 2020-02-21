@@ -11,11 +11,23 @@ export class Accordion extends Component {
                 <div className="atbdb_content_module_contents">
                     <div className="atbdp-accordion">
                         <div className="accordion-single selected">
-                            <h3 className="faq-title"><NavLink onClick={noAction} to="/at_demo">Question number one</NavLink></h3>
-                            <p className="ac-body" style={{display: 'block'}}>Ensuring productivity and growth is essential for architecture and engineering teams. The industry requires a high level of precision, full legal compliance</p>
+                            <h3 className="faq-title"><a href="#none">Question number one</a></h3>
+                            <p className="ac-body" style={{display: 'block'}}>
+
+
+                              hhhhhh
+
+
+                            </p>
                         </div>
+
                         <div className="accordion-single">
-                            <h3 className="faq-title"><NavLink onClick={noAction} to="/at_demo">Question number two and others</NavLink></h3>
+                            <h3 className="faq-title"><a href="#none">Check In Instructions</a></h3>
+                            <p className="ac-body" style={{display: 'none'}}>Ensuring productivity and growth is essential for architecture and engineering teams. The industry requires a high.</p>
+                        </div>
+
+                        <div className="accordion-single">
+                            <h3 className="faq-title"><a href="#none">Check In Instructions</a></h3>
                             <p className="ac-body" style={{display: 'none'}}>Ensuring productivity and growth is essential for architecture and engineering teams. The industry requires a high.</p>
                         </div>
                     </div>

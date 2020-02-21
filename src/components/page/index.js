@@ -2,19 +2,12 @@ import React, {Fragment, Component} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import AdvSearch from '../content/element/advance-search';
-import CardCategoryGrid4 from '../content/element/card/card-category-grid-4';
 import { SectionTitle } from '../content/element/section-title';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import { NavLink } from 'react-router-dom';
 import { ContentBlockHome } from '../content/element/content-block';
-import CardCategoryGrid2 from '../content/element/card/card-category-grid-2';
-import { PlaceList } from '../content/element/place-list';
-import Testimonial from '../content/element/carousel/testimonial';
-import ClientLogo from '../content/element/carousel/client-logo';
-import { Subscribe } from '../content/element/subscribe';
 import { connect } from 'react-redux';
 
-const noAction = e => e.preventDefault();
 class Index extends Component {
 
     render() {
@@ -61,12 +54,8 @@ class Index extends Component {
 
                 <ContentBlockHome />
 
-                {/* Place section start */}
-                <section className="places section-padding">
-                </section>
-                {/* Place section end */}
-
                 {/* Testimonial section start */}
+                {/*
                 <section className="testimonial-wrapper section-padding--bottom">
                     <div className="container">
                         <SectionTitle
@@ -78,6 +67,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </section>
+                */}
                 {/* Testimonial section end */}
 
                <Footer />

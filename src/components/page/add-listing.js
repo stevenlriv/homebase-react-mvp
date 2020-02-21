@@ -1,23 +1,33 @@
-import React, {useState, setState, Fragment, Component} from 'react';
+import React, {useState, Fragment} from 'react';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Map1 from '../content/element/map';
 import { newListingDocument } from '../../Store/action/listingActions';
 import {storage} from "../../Store/firebase/firebase";
 
 function AddListing(props) {
 
         const user = props.user;
+        const d = new Date();
+
+        let cityArray = {};
+        let stateArray = {};
+        let countryArray = {};
 
         // STATE FOR FORM FIELDS
         const [airConditioning, setairConditioning] = useState('false');
         const [bookTourLink, setbookTourLink] = useState('');
-        const [checkInDescription, setcheckInDescription] = useState('');
         const [checkInPinCode, setcheckInPinCode] = useState('');
         const [citiesCategory, setcitiesCategory] = useState('');
+
+        const [checkInDescription1, setcheckInDescription1] = useState('');
+        const [checkInDescription2, setcheckInDescription2] = useState('');
+        const [checkInDescription3, setcheckInDescription3] = useState('');
+        const [checkInDescription4, setcheckInDescription4] = useState('');
+        const [checkInDescription5, setcheckInDescription5] = useState('');
+        const [checkInDescription6, setcheckInDescription6] = useState('');
 
         const [country, setcountry] = useState('');
         const [depositFullHouse, setdepositFullHouse] = useState('');
@@ -50,12 +60,20 @@ function AddListing(props) {
         const [wifiSSID, setwifiSSID] = useState('');
         const [zipCode, setzipCode] = useState('');
 
+        const [year, setyear] = useState(d.getFullYear());
+        const [month, setmonth] = useState(d.getMonth() + 1); //+1 because in js January = 0
+        const [date, setdate] = useState(d.getDate());
+
         let [formError, setError] = useState('');
         let [formSucc, setSuccess] = useState('');
 
         // STATE FOR IMAGE FIELDS
-        const [checkInFirstImg, setcheckInFirstImg] = useState('');
-        const [checkInLastImg, setcheckInLastImg] = useState('');
+        const [checkInImg1, setcheckInImg1] = useState('');
+        const [checkInImg2, setcheckInImg2] = useState('');
+        const [checkInImg3, setcheckInImg3] = useState('');
+        const [checkInImg4, setcheckInImg4] = useState('');
+        const [checkInImg5, setcheckInImg5] = useState('');
+        const [checkInImg6, setcheckInImg6] = useState('');
         const [imgMain, setimgMain] = useState('');
         const [listingImg1, setlistingImg1] = useState('');
         const [listingImg2, setlistingImg2] = useState('');
@@ -67,8 +85,8 @@ function AddListing(props) {
         const [listingImg8, setlistingImg8] = useState('');
 
         //Images variables to attach to Url
-        const [checkInFirstImgFix, setcheckInFirstImgFix] = useState('');
-        const [checkInLastImgFix, setcheckInLastImgFix] = useState('');
+        const [checkInImg1Fix, setcheckInImg1Fix] = useState('');
+        const [checkInImg2Fix, setcheckInImg2Fix] = useState('');
         const [imgMainFix, setimgMainFix] = useState('');
         const [listingImg1Fix, setlistingImg1Fix] = useState('');
         const [listingImg2Fix, setlistingImg2Fix] = useState('');
@@ -86,14 +104,37 @@ function AddListing(props) {
         const handlebookTourLink = ({ target }) => {
           setbookTourLink(target.value);
         };
-        const handlecheckInDescription = ({ target }) => {
-          setcheckInDescription(target.value);
-        };
         const handlecheckInPinCode = ({ target }) => {
           setcheckInPinCode(target.value);
         };
         const handlecitiesCategory = ({ target }) => {
           setcitiesCategory(target.value);
+        };
+
+        ///
+
+        const handlecheckInDescription1 = ({ target }) => {
+          setcheckInDescription1(target.value);
+        };
+
+        const handlecheckInDescription2 = ({ target }) => {
+          setcheckInDescription2(target.value);
+        };
+
+        const handlecheckInDescription3 = ({ target }) => {
+          setcheckInDescription3(target.value);
+        };
+
+        const handlecheckInDescription4 = ({ target }) => {
+          setcheckInDescription4(target.value);
+        };
+
+        const handlecheckInDescription5 = ({ target }) => {
+          setcheckInDescription5(target.value);
+        };
+
+        const handlecheckInDescription6 = ({ target }) => {
+          setcheckInDescription6(target.value);
         };
 
         ///
@@ -189,16 +230,42 @@ function AddListing(props) {
           setzipCode(target.value);
         };
 
+        ///
+
+        const handleyear = ({ target }) => {
+          setyear(target.value);
+        };
+        const handlemonth = ({ target }) => {
+          setmonth(target.value);
+        };
+        const handledate = ({ target }) => {
+          setdate(target.value);
+        };
 
         // HANDLE IMAGE STATES
-        const handlecheckInFirstImg = (e) => {
+        const handlecheckInImg1 = (e) => {
           const image = e.target.files[0];
-          setcheckInFirstImg(imageFile => (image));
+          setcheckInImg1(imageFile => (image));
         }
-
-        const handlecheckInLastImg = (e) => {
+        const handlecheckInImg2 = (e) => {
           const image = e.target.files[0];
-          setcheckInLastImg(imageFile => (image));
+          setcheckInImg2(imageFile => (image));
+        }
+        const handlecheckInImg3 = (e) => {
+          const image = e.target.files[0];
+          setcheckInImg3(imageFile => (image));
+        }
+        const handlecheckInImg4 = (e) => {
+          const image = e.target.files[0];
+          setcheckInImg4(imageFile => (image));
+        }
+        const handlecheckInImg5 = (e) => {
+          const image = e.target.files[0];
+          setcheckInImg5(imageFile => (image));
+        }
+        const handlecheckInImg6 = (e) => {
+          const image = e.target.files[0];
+          setcheckInImg6(imageFile => (image));
         }
 
         const handleimgMain = (e) => {
@@ -241,12 +308,13 @@ function AddListing(props) {
 
         /////////////////////////////////////////////////////////////////////////////////
         // Verify if the user is an admin, if not reddirect away
-        if( user.userData.type != "admin" ) return <Redirect to="/my-homebase"  />;
+        if( user.userData.type !== "admin" ) return <Redirect to="/my-homebase"  />;
         /////////////////////////////////////////////////////////////////////////////////
 
         //////////////////////////////////////////////
         // Form Submition
         //////////////////////////////////////////////
+
         const handleSubmit = (e) => {
           //To prevent modal reload after submission
           e.preventDefault();
@@ -256,61 +324,57 @@ function AddListing(props) {
 
           //We proccess the form submition
 
-          if ( listingTitle == '' ) {
+          if ( listingTitle === '' ) {
             setError('Please enter a title for the listing.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( listingDescription == '' ) {
+          if ( listingDescription === '' ) {
             setError('Please enter a description for the listing.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( monthlyRentFullHouse == '' ) {
+          if ( monthlyRentFullHouse === '' ) {
             setError('Please enter the monthly rent for the unit.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( depositFullHouse == '' ) {
+          if ( depositFullHouse === '' ) {
             setError('Please enter the deposit required to rent the unit.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( physicalAddress == '' ) {
+          if ( physicalAddress === '' ) {
             setError('Please enter the unit physical address.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( postalAddress == '' ) {
+          /*
+          if ( postalAddress === '' ) {
             setError('Please enter the unit postal address.');
             fmMsg.scrollIntoView();
             return;
           }
+          */
 
-          if ( citiesCategory == '' || state == '' || country == '' ) {
+          if ( citiesCategory === '' || state === '' || country === '' ) {
             setError('Please select the city, state and country.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( zipCode == '' ) {
+          if ( zipCode === '' ) {
             setError('Please enter the unit zipcode.');
             fmMsg.scrollIntoView();
             return;
           }
 
-          if ( checkInDescription == '' ) {
-            setError('Please enter a description so the user knows what to do when is checking in.');
-            fmMsg.scrollIntoView();
-            return;
-          }
-
-          if ( checkInDescription == '' ) {
+          if ( checkInDescription1 === '' ) {
             setError('Please enter a description so the user knows what to do when is checking in.');
             fmMsg.scrollIntoView();
             return;
@@ -323,40 +387,94 @@ function AddListing(props) {
             return;
           }
 
-
           ///////////////////////
           // We upload the images
           ///////////////////////
-          const d = new Date();
           const storageURL = `/images/listings/${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
           const rnImage = Math.floor(100000 + Math.random() * 90000000);
 
           //MAIN IMAGE
-          const uploadimgMain = storage.ref(`${storageURL}/${rnImage}-${imgMain.name}`).put(imgMain);
-          uploadimgMain.on('state_changed', () => {
+          if(imgMain !== '') {
+            const uploadimgMain = storage.ref(`${storageURL}/${rnImage}-${imgMain.name}`).put(imgMain);
+
+            console.log(uploadimgMain);
+            console.log('---');
+
+            const getlolito = () => { uploadimgMain.on('state_changed', () => {
               storage.ref(storageURL).child(`${rnImage}-${imgMain.name}`).getDownloadURL()
                .then(fireBaseUrl => {
                  setimgMainFix(fireBaseUrl);
+                 return fireBaseUrl;
                })
-            })
+             }).catch(function(error) {
+               // Handle any errors
+             });
+
+          }
+          console.log('last test of URL');
+          console.log(getlolito());
+
+        }
+
+
 
           // Other Images
-          if(checkInFirstImg !== '') {
-            const uploadcheckInFirstImg = storage.ref(`${storageURL}/${rnImage}-${checkInFirstImg.name}`).put(checkInFirstImg);
-            uploadcheckInFirstImg.on('state_changed', () => {
-                storage.ref(storageURL).child(`${rnImage}-${checkInFirstImg.name}`).getDownloadURL()
+          if(checkInImg1 !== '') {
+            const uploadcheckInImg1 = storage.ref(`${storageURL}/${rnImage}-${checkInImg1.name}`).put(checkInImg1);
+            uploadcheckInImg1.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg1.name}`).getDownloadURL()
                  .then(fireBaseUrl => {
-                   setcheckInFirstImg(fireBaseUrl);
+                   //setcheckInImg1Fix(fireBaseUrl);
                  })
               })
           }
 
-          if(checkInLastImg !== '') {
-            const uploadcheckInLastImg = storage.ref(`${storageURL}/${rnImage}-${checkInLastImg.name}`).put(checkInLastImg);
-            uploadcheckInLastImg.on('state_changed', () => {
-                storage.ref(storageURL).child(`${rnImage}-${checkInLastImg.name}`).getDownloadURL()
+          if(checkInImg2 !== '') {
+            const uploadcheckInImg2 = storage.ref(`${storageURL}/${rnImage}-${checkInImg2.name}`).put(checkInImg2);
+            uploadcheckInImg2.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg2.name}`).getDownloadURL()
                  .then(fireBaseUrl => {
-                   setcheckInLastImgFix(fireBaseUrl);
+                  // setcheckInImg2Fix('HOLAAAAAAA SII FUNCIONAAA');
+                 })
+              })
+          }
+
+          if(checkInImg3 !== '') {
+            const uploadcheckInImg3 = storage.ref(`${storageURL}/${rnImage}-${checkInImg3.name}`).put(checkInImg3);
+            uploadcheckInImg3.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg3.name}`).getDownloadURL()
+                 .then(fireBaseUrl => {
+                   //setcheckInImg3Fix('HOLAAAAAAA SII FUNCIONAAA');
+                 })
+              })
+          }
+
+          if(checkInImg4 !== '') {
+            const uploadcheckInImg4 = storage.ref(`${storageURL}/${rnImage}-${checkInImg4.name}`).put(checkInImg4);
+            uploadcheckInImg4.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg4.name}`).getDownloadURL()
+                 .then(fireBaseUrl => {
+                   //setcheckInImg4Fix('HOLAAAAAAA SII FUNCIONAAA');
+                 })
+              })
+          }
+
+          if(checkInImg5 !== '') {
+            const uploadcheckInImg5 = storage.ref(`${storageURL}/${rnImage}-${checkInImg5.name}`).put(checkInImg5);
+            uploadcheckInImg5.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg5.name}`).getDownloadURL()
+                 .then(fireBaseUrl => {
+                   //setcheckInImg5Fix('HOLAAAAAAA SII FUNCIONAAA');
+                 })
+              })
+          }
+
+          if(checkInImg6 !== '') {
+            const uploadcheckInImg6 = storage.ref(`${storageURL}/${rnImage}-${checkInImg6.name}`).put(checkInImg6);
+            uploadcheckInImg6.on('state_changed', () => {
+                storage.ref(storageURL).child(`${rnImage}-${checkInImg6.name}`).getDownloadURL()
+                 .then(fireBaseUrl => {
+                   //setcheckInImg6Fix('HOLAAAAAAA SII FUNCIONAAA');
                  })
               })
           }
@@ -450,9 +568,18 @@ function AddListing(props) {
             user.userAuth.userId,
             airConditioning,
             bookTourLink,
-            checkInDescription,
-            checkInFirstImgFix,
-            checkInLastImgFix,
+            checkInDescription1,
+            checkInDescription2,
+            checkInDescription3,
+            checkInDescription4,
+            checkInDescription5,
+            checkInDescription6,
+            checkInImg1,
+            checkInImg2,
+            checkInImg3,
+            checkInImg4,
+            checkInImg5,
+            checkInImg6,
             checkInPinCode,
             citiesCategory,
             country,
@@ -489,6 +616,7 @@ function AddListing(props) {
             listingImg6Fix,
             listingImg7Fix,
             listingImg8Fix,
+            `${year}/${month}/${date}`
           );
 
           setError(''); // CLean errors
@@ -541,6 +669,9 @@ function AddListing(props) {
                                             <form action="/">
                                                 <div className="form-group">
                                                     <label htmlFor="title" className="form-label">Title <span className="text-danger">*(required)</span></label>
+
+                                                    <p className="font-italic">Just a simple title for the listing no "$1200 · Oasis House · 1 bed", instead a better title is just "Oasis House"</p>
+
                                                     <input value={listingTitle} onChange={handlelistingTitle} type="text" className="form-control" placeholder="Enter a descriptive title for the listing" />
                                                 </div>
                                                 <div className="form-group">
@@ -602,6 +733,76 @@ function AddListing(props) {
 
                                                     <div className="pricing-option-inputs">
                                                         <input value={depositFullHouse} onChange={handledepositFullHouse} type="number" className="form-control" placeholder="Only Numbers Eg. 1000" />
+                                                    </div>
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label className="form-label">Availability Date <span className="text-danger">*(required)</span></label>
+
+                                                    <p className="font-italic">When is the unit available to be rented? (year/month/date)</p>
+
+                                                    <div className="form-inline">
+                                                      <select className="form-control mx-sm-4 mb-3" onChange={handleyear}>
+                                                        <option value={d.getFullYear()}>{d.getFullYear()}</option>
+                                                        <option value={d.getFullYear() + 1}>{d.getFullYear() + 1}</option>
+                                                      </select>
+
+                                                      <select className="form-control mx-sm-4 mb-3" onChange={handlemonth}>
+                                                        <option value={d.getMonth() + 1}>{d.getMonth() + 1}</option>
+
+                                                        <option> -- -- </option>
+
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                      </select>
+
+                                                      <select className="form-control mx-sm-4 mb-3" onChange={handledate}>
+                                                        <option value={d.getDate()}>{d.getDate()}</option>
+
+                                                        <option> -- -- </option>
+
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                      </select>
                                                     </div>
                                                 </div>
 
@@ -740,20 +941,24 @@ function AddListing(props) {
                                                 <label htmlFor="desc" className="form-label">Physical Address - do not include postal code or city/country <span className="text-danger">*(required)</span></label>
                                                 <input value={physicalAddress} onChange={handlephysicalAddress} type="text" className="form-control" placeholder="Eg. 1410 Calle Georgetti" required />
                                             </div>
+
+                                            {/*
                                             <div className="form-group">
                                                 <label htmlFor="desc" className="form-label">Postal Address - do not include postal code or city/country <span className="text-danger">*(required)</span></label>
                                                 <input value={postalAddress} onChange={handlepostalAddress} type="text" className="form-control" placeholder="Eg. 1410 Calle Georgetti" required />
                                             </div>
+                                            */}
                                             <div className="form-group">
                                                 <label htmlFor="desc" className="form-label">City <span className="text-danger">*(required)</span></label>
                                                 <div className="select-basic">
                                                   <select className="form-control" onChange={handlecitiesCategory}>
                                                   <option selected>-- Select One --</option>
                                                   {
+
                                                       Object.values(cities).map((value, key) => {
 
-                                                          const { city, state, img, uri, tagLine } = value;
-                                                          if( city != '' ) {
+                                                          const { city, tagLine } = value;
+                                                          if( city !== '' ) {
 
                                                             return (
                                                               <option value={city}>{tagLine}</option>
@@ -770,8 +975,8 @@ function AddListing(props) {
                                                 <option selected>-- Select One --</option>
                                                 {
                                                     Object.values(cities).map((value, key) => {
-                                                        const { city, state, img, uri, tagLine } = value;
-                                                        if( state != '' ) {
+                                                        const { state } = value;
+                                                        if( state !== '' ) {
                                                           return (
                                                             <option value={state}>{state}</option>
                                                           )
@@ -786,8 +991,8 @@ function AddListing(props) {
                                                 <option selected>-- Select One --</option>
                                                 {
                                                     Object.values(cities).map((value, key) => {
-                                                        const { city, country, state, img, uri, tagLine } = value;
-                                                        if( country != '' ) {
+                                                        const { country } = value;
+                                                        if( country !== '' ) {
                                                           return (
                                                             <option value={country}>{country}</option>
                                                           )
@@ -813,22 +1018,96 @@ function AddListing(props) {
                                         </div>
                                         <div className="atbdb_content_module_contents">
                                             <form action="/">
-                                                <div className="form-group">
-                                                  <label htmlFor="address" className="form-label">Check In Image #1 - To show where the lockbox is located (optional)</label>
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #1 <span className="text-danger">*(required)</span></label>
+                                                    <textarea onChange={handlecheckInDescription1} rows="4" className="form-control" placeholder="Description #1">{checkInDescription1}</textarea>
+                                                  </div>
 
-                                                  <input type="file" className="btn btn-sm" onChange={handlecheckInFirstImg} />
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #1 - Ex. To show where the lockbox is located (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg1} />
+                                                  </div>
                                                 </div>
 
-                                                <div className="form-group">
-                                                  <label htmlFor="address" className="form-label">Check In Image #2 (optional)</label>
+                                                <br /><br />
 
-                                                  <input type="file" className="btn btn-sm" onChange={handlecheckInLastImg} />
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #2 (optional)</label>
+                                                    <textarea onChange={handlecheckInDescription2} rows="4" className="form-control" placeholder="Description #2">{checkInDescription2}</textarea>
+                                                  </div>
+
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #2 (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg2} />
+                                                  </div>
                                                 </div>
 
-                                                <div className="form-group">
-                                                    <label htmlFor="address" className="form-label">Description For User <span className="text-danger">*(required)</span></label>
-                                                    <textarea onChange={handlecheckInDescription} rows="4" className="form-control" placeholder="Description">{checkInDescription}</textarea>
+                                                <br /><br />
+
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #3 (optional)</label>
+                                                    <textarea onChange={handlecheckInDescription3} rows="4" className="form-control" placeholder="Description #3">{checkInDescription3}</textarea>
+                                                  </div>
+
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #3 (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg3} />
+                                                  </div>
                                                 </div>
+
+                                                <br /><br />
+
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #4 (optional)</label>
+                                                    <textarea onChange={handlecheckInDescription4} rows="4" className="form-control" placeholder="Description #4">{checkInDescription4}</textarea>
+                                                  </div>
+
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #4 (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg4} />
+                                                  </div>
+                                                </div>
+
+                                                <br /><br />
+
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #5 (optional)</label>
+                                                    <textarea onChange={handlecheckInDescription5} rows="4" className="form-control" placeholder="Description #5">{checkInDescription5}</textarea>
+                                                  </div>
+
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #5 (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg5} />
+                                                  </div>
+                                                </div>
+
+                                                <br /><br />
+
+                                                <div>
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Description #6 (optional)</label>
+                                                    <textarea onChange={handlecheckInDescription6} rows="4" className="form-control" placeholder="Description #6">{checkInDescription6}</textarea>
+                                                  </div>
+
+                                                  <div className="form-group">
+                                                    <label htmlFor="address" className="form-label">Check In Image #6 (optional)</label>
+
+                                                    <input type="file" className="btn btn-sm" onChange={handlecheckInImg6} />
+                                                  </div>
+                                                </div>
+
+                                                <br /><br />
+
                                                 <div className="form-group">
                                                     <label htmlFor="phone_number" className="form-label">Pin Code (optional)</label>
                                                     <input value={checkInPinCode} onChange={handlecheckInPinCode} type="text" placeholder="Pin Code" className="form-control" />

@@ -4,7 +4,6 @@ import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import { LogOut } from '../../Store/action/logoutAction';
 
 const noAction = e => e.preventDefault();
@@ -14,7 +13,7 @@ class AdminDashbord extends Component {
         const user = this.props.user;
 
         // Verify if the user is an admin, if not reddirect away
-        if( user.userData.type != "admin" ) return <Redirect to="/my-homebase"  />;
+        if( user.userData.type !== "admin" ) return <Redirect to="/my-homebase"  />;
 
         const logdIn = () => {
             return this.props.isAuthenticated;

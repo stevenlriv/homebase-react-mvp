@@ -1,13 +1,10 @@
-import React, { useState, setState, Fragment } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import React, { useState, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../layout/header';
 import { Footer } from '../layout/footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
-import Map1 from '../content/element/map';
 import { SectionTitle } from '../content/element/section-title';
 import { signUpEmail } from '../../Store/action/signupAction';
-import $ from 'jquery';
 
 function SignUp(props) {
 
@@ -52,17 +49,17 @@ function SignUp(props) {
       return;
     }
 
-    if ( fullName == '' ) {
+    if ( fullName === '' ) {
       setError('Please enter your full name.');
       return;
     }
 
-    if ( email == '' ) {
+    if ( email === '' ) {
       setError('Please enter your email address.');
       return;
     }
 
-    if ( password == '' ) {
+    if ( password === '' ) {
       setError('Please enter your password.');
       return;
     }
@@ -73,12 +70,12 @@ function SignUp(props) {
       return;
     }
 
-    if ( confirmPassword == '' ) {
+    if ( confirmPassword === '' ) {
       setError('Please confirm your password.');
       return;
     }
 
-    if ( password != confirmPassword ) {
+    if ( password !== confirmPassword ) {
       setError('Your password does not match.');
       return;
     }

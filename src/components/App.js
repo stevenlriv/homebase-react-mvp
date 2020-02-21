@@ -15,7 +15,6 @@ import Faq from './page/faq';
 import CitiesNotAvailable from './page/cities-notavailable';
 import Privacy from './page/privacy';
 import Terms from './page/terms';
-import About from './page/about';
 import ForOwners from './page/for-owners';
 import Living from './page/living';
 import Membership from './page/membership';
@@ -29,6 +28,7 @@ import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
 import SignUp from './page/sign-up';
 import RecoverPassword from './page/recover-password';
+import NotFound from './page/not-found';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -117,6 +117,9 @@ function App(props) {
             isAuthenticated={isAuthenticated}
             isVerifying={isVerifying}
           />
+
+          {/*For pages not found*/}
+          <Route component={NotFound} />
         </Switch>
     </Router>
   );

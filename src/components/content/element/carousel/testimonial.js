@@ -15,11 +15,12 @@ class Testimonial extends Component {
         const { tistimonial } = this.props;
         return (
             <Fragment>
+
                 <OwlCarousel options={options} className="testimonial-carousel owl-carousel" >
                     {
                         Object.values(tistimonial).slice(0, 2).map((value, key) => {
                             const { img } = value;
-                            return (                       
+                            return (
                                 <div className="carousel-single" key={key}>
                                     <div className="author-thumb">
                                         <img src={img} alt="" className="rounded-circle" />
@@ -30,11 +31,12 @@ class Testimonial extends Component {
                                     </div>
                                     <p className="author-comment">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident
                                         culpa officia deserunt mollit.</p>
-                                </div>                  
+                                </div>
                             )
                         })
                     }
                 </OwlCarousel>
+
             </Fragment>
         )
     }

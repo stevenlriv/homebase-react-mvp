@@ -3,11 +3,6 @@ import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbLiving } from '../content/element/breadcrumb';
 import { ContentBlockLiving } from '../content/element/content-block';
-import { Counter } from '../content/element/counter';
-import Testimonial from '../content/element/carousel/testimonial';
-import { SectionTitle } from '../content/element/section-title';
-import ClientLogo from '../content/element/carousel/client-logo';
-import { Subscribe } from '../content/element/subscribe';
 import {connect} from 'react-redux';
 
 const About = (props) => {
@@ -26,6 +21,7 @@ const About = (props) => {
             <ContentBlockLiving />
 
             {/* Testimonial section start */}
+            {/*
             <section className="testimonial-wrapper section-padding-strict">
                 <div className="container">
                     <SectionTitle
@@ -37,6 +33,7 @@ const About = (props) => {
                     </div>
                 </div>
             </section>
+            */}
             {/* Testimonial section end */}
 
            <Footer />

@@ -3,11 +3,6 @@ import Header from '../layout/header';
 import { Footer } from '../layout/footer';
 import { BreadcrumbMembership } from '../content/element/breadcrumb';
 import { ContentBlockMembership } from '../content/element/content-block';
-import { Counter } from '../content/element/counter';
-import Testimonial from '../content/element/carousel/testimonial';
-import { SectionTitle } from '../content/element/section-title';
-import ClientLogo from '../content/element/carousel/client-logo';
-import { Subscribe } from '../content/element/subscribe';
 import {connect} from 'react-redux';
 
 const Membership = (props) => {
@@ -21,7 +16,7 @@ const Membership = (props) => {
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
                 <BreadcrumbMembership />
-                
+
                 <ContentBlockMembership />
             </section>
             {/* Header section end */}

@@ -6,8 +6,6 @@ import { LogOut } from '../../../Store/action/logoutAction';
 
 class Header extends Component {
     render() {
-      const user = this.props.user;
-
       const logdIn = () => {
         return this.props.isAuthenticated;
       }
@@ -49,14 +47,14 @@ class Header extends Component {
                                                     !logdIn() ? (
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
-                                                                <a href="#" className="access-link btn btn-xl bg-dark-hb font-weight-bold" data-toggle="modal" data-target="#login_modal">SIGN IN</a>
+                                                                <a href="#main" className="access-link btn btn-xl bg-dark-hb font-weight-bold" data-toggle="modal" data-target="#login_modal">SIGN IN</a>
                                                             </li>
                                                         </ul>
                                                     ) : (
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
                                                                 <div className="author-info">
-                                                                    <a href="#" className="author-avatar">
+                                                                    <a href="#main" className="author-avatar">
 
                                                                             <img src="/assets/img/review-author-thumb.jpg" width="50px" height="50px" alt="AuthorImage" className="rounded-circle" />
                                                                     </a>
