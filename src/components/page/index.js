@@ -32,6 +32,7 @@ class Index extends Component {
                 {/* Header section end */}
 
                 {/* Listing section start */}
+                {/*
                 <section className="listing-cards section-bg section-padding bg-hb">
                     <div className="container">
                         <SectionTitle
@@ -50,6 +51,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </section>
+                */}
                 {/* Listing section end */}
 
                 <ContentBlockHome />

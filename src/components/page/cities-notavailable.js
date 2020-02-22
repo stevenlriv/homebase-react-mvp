@@ -23,6 +23,9 @@ const CitiesNotAvailable = (props) => {
                     title="Ups, it looks like there are no units available at this time"
                     content="But don't worry come back in a few days, we are always adding more daily" />
 
+                    <SectionTitle
+                    title=""
+                    content="In the meantime, contact us, to see if we can help!" />
 
                 </div>
             </section>

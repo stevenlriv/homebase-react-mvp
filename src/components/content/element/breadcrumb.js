@@ -36,15 +36,16 @@ export class BreadcrumbSingle extends Component {
             <Fragment>
                 <div className="col-lg-8 col-md-7">
                     <ul className="list-unstyled listing-info--badges">
-                        <li><span className={"atbd_badge atbd_badge_"+badge}>{badge}</span></li>
-                        <li><span className="atbd_badge atbd_badge_popular">Popular</span></li>
+                        <li><span className={"atbd_badge atbd_badge_featured"}>featured</span></li>
+                        {/*<li><span className="atbd_badge atbd_badge_popular">Popular</span></li>*/}
                     </ul>
                     <ul className="list-unstyled listing-info--meta">
                         <li>{/**/}
-                            <span className="atbd_meta atbd_listing_average_pricing" data-toggle="tooltip" data-placement="top" title="" data-original-title="Average">
-                                {"$ "+price}
+                            <span className="atbd_meta atbd_listing_average_pricing" data-toggle="tooltip" data-placement="top" title="" data-original-title="Monthly Rent">
+                                $1200
                             </span>
                         </li>
+                        {/*
                         <li>
                             <div className="average-ratings">
                                 <span className="atbd_meta atbd_listing_rating">{rating}<i className="la la-star"></i></span>
@@ -55,18 +56,23 @@ export class BreadcrumbSingle extends Component {
                             <div className="atbd_listing_category">
                                 <a href=" "><span className="la la-glass"></span>{category}</a>
                             </div>
-                        </li>
+                        </li>*/}
                     </ul>{/*<!-- ends: .listing-info-meta -->*/}
-                    <h1>Strawberry Basil Lemonade</h1>
-                    <p className="subtitle">{title}</p>
+                    <h1>Oasis House</h1>
+                    <p className="subtitle">San Juan</p>
                 </div>
+
+                {/*
                 <div className="col-lg-4 col-md-5 d-flex align-items-end justify-content-start justify-content-md-end">
                     <div className="atbd_listing_action_area">
+
+
                         <div className="atbd_action atbd_save">
                             <div className="action_button">
                                 <a href=" " onClick={noAction} className="atbdp-favourites"><span className="la la-heart-o"></span> Save</a>
                             </div>
                         </div>
+
                         <div className="atbd_action atbd_share dropdown">
                             <span className="dropdown-toggle" id="social-links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu">
                                 <span className="la la-share"></span>Share
@@ -96,18 +102,18 @@ export class BreadcrumbSingle extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <!--Ends social share--> */}
+
                         </div>
-                        {/* <!-- Report Abuse--> */}
+
                         <div className="atbd_action atbd_report">
                             <div className="action_button">
                                 <a href=" " data-toggle="modal" data-target="#atbdp-report-abuse-modal"><span className="la la-flag-o"></span> Report</a>
                             </div>
-                            {/* <!-- Modal (report abuse form) --> */}
+
                         </div>
                     </div>
-                    {/* <!-- ends: .atbd_listing_action_area --> */}
-                </div>
+
+                </div>*/}
 
             </Fragment>
         )

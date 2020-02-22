@@ -11,10 +11,7 @@ import ListingCardGrid6 from '../content/element/card/card-listingDashboard';
 import { db } from '../../Store/firebase/firebase';
 
 function AuthDeshbord(props) {
-        const user = props.user;
-
-        const [userHomebase, setuserHomebase] = useState('');
-        const [leaseData, setleaseData] = useState('');
+        const { user, userHomebase, leaseData }  = props;
 
         // Verify if the user is an admin, if not reddirect away
         if( user.userData.type === "admin" ) return <Redirect to="/admin-dashboard"  />;
@@ -23,31 +20,6 @@ function AuthDeshbord(props) {
             return props.isAuthenticated;
         }
         const light = props.logo[0].light;
-
-        /////////////////////////////////////////////////////////////
-        //Lets get the user listing
-        //First lest get the lease data
-        let leaseRef = db.collection("lease").doc(user.userData.leaseId);
-        leaseRef.get()
-          .then(doc => {
-            if (doc.exists) {
-              setleaseData(doc.data());
-            }
-        })
-        .catch(err => {
-        });
-
-        //Then lets get the user homebase
-        let listingRef = db.collection("listings").doc("5I0sRxaOLwFpPnZavEdT");
-        listingRef.get()
-          .then(doc => {
-            if (doc.exists) {
-              setuserHomebase(doc.data());
-            }
-        })
-        .catch(err => {
-        });
-        ////////////////////////////////////////////////
 
         return (
             <Fragment>
@@ -248,6 +220,8 @@ function AuthDeshbord(props) {
 const mapStateToProps = state => {
     return {
         user: state.userAuth.user,
+        userHomebase: state.userAuth.userHomebase,
+        leaseData: state.userAuth.leaseData,
         isAuthenticated: state.userAuth.isAuthenticated,
         list: state.list,
         login : state.login,

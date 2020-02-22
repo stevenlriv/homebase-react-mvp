@@ -57,6 +57,134 @@ function Accordion(props) {
                             <h3 className="faq-title"><a href="#checkin">Your Homebase Check In Instructions</a></h3>
                             <p className="ac-body" style={{display: 'none'}}>
 
+                              {/* Check In Description #1 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg1 ? (
+                                    <p><img src={userHomebase.checkInImg1} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInPinCode ? (
+                                    <p><b>PIN CODE: </b> {userHomebase.checkInPinCode}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                                <p><br />{userHomebase.checkInDescription1}</p>
+
+                              </div>
+                              {/* ENDS Check In Description #1 */}
+
+                              {/* Check In Description #2 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg2 ? (
+                                    <p><br />
+                                    <img src={userHomebase.checkInImg2} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInDescription2 ? (
+                                    <p><br />{userHomebase.checkInDescription2}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+                              </div>
+                              {/* ENDS Check In Description #2 */}
+
+                              {/* Check In Description #3 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg3 ? (
+                                    <p><br />
+                                    <img src={userHomebase.checkInImg3} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInDescription3 ? (
+                                    <p><br />{userHomebase.checkInDescription3}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+                              </div>
+                              {/* ENDS Check In Description #3 */}
+
+                              {/* Check In Description #4 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg4 ? (
+                                    <p><br />
+                                    <img src={userHomebase.checkInImg4} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInDescription4 ? (
+                                    <p><br />{userHomebase.checkInDescription4}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+                              </div>
+                              {/* ENDS Check In Description #4 */}
+
+                              {/* Check In Description #5 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg5 ? (
+                                    <p><br />
+                                    <img src={userHomebase.checkInImg5} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInDescription5 ? (
+                                    <p><br />{userHomebase.checkInDescription5}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+                              </div>
+                              {/* ENDS Check In Description #5 */}
+
+                              {/* Check In Description #6 */}
+                              <div>
+                              {
+                                  userHomebase.checkInImg6 ? (
+                                    <p><br />
+                                    <img src={userHomebase.checkInImg6} style={{width: "100%", maxWidth: "600px"}} /></p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+
+                              {
+                                  userHomebase.checkInDescription6 ? (
+                                    <p><br />{userHomebase.checkInDescription6}</p>
+                                  ) : (
+                                    <span></span>
+                                  )
+                              }
+                              </div>
+                              {/* ENDS Check In Description #6 */}
+
                             </p>
                         </div>
 

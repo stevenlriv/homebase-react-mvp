@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import ProtectedRoute from "./protectedRoute";
 
 import Index from './page/index';
-import AllListingGrid from './page/all-listing-grid';
 import AllListingList from './page/all-listing-list';
 import ListingDetails from './page/listing-details';
 import Category from './page/all-categoris';
@@ -36,13 +35,10 @@ function App(props) {
     <Router basename={process.env.PUBLIC_URL} >
         <Switch>
         {/* To be removed or edited */}
-        <Route path = '/all-listings-grid' component = { AllListingGrid } />
-        <Route path = '/all-locations' component = { Location } />
-        <Route path = '/pricing-plans' component = { Pricing } />
+        {/*<Route path = '/all-locations' component = { Location } />
+        <Route path = '/pricing-plans' component = { Pricing } />*/}
 
           <Route exact path = '/' component = { Index } />
-          <Route path = '/all-listings-list' component = { AllListingList } />
-          <Route path = '/listing-details:id' component = { ListingDetails } />
           <Route path = '/find-a-homebase' component = { Category } />
           <Route path = '/faqs' component = { Faq } />
           <Route path = '/membership' component = { Membership } />
@@ -56,6 +52,9 @@ function App(props) {
           <Route path = '/recover-password' component = { RecoverPassword } />
 
           {/* Cities Router */}
+          <Route path = '/cities/san-juan' component = { AllListingList } />
+          <Route path = '/san-juan/:id' component = { ListingDetails } />
+          
           <Route path = '/cities/san-francisco' component = { CitiesNotAvailable } />
           <Route path = '/cities/santiago' component = { CitiesNotAvailable } />
 

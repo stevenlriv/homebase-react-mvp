@@ -120,34 +120,40 @@ export class CategoryWithIcon extends Component {
 
                 <div className="widget atbd_widget widget-card">
                     <div className="atbd_widget_title">
-                        <h4><span className="la la-bookmark"></span> Category with Icon</h4>
+                        <h4><span className="la la-bookmark"></span> Amenities</h4>
                     </div>{/*<!-- ends: /.atbd_widget_title -->*/}
                     <div className="widget-body atbdp-widget-categories">
                         <ul className="atbdp_parent_category">
                             <li>
-                                <NavLink onClick={noAction} to="/at_demo"><span className="la la-money"></span>Business</NavLink>
+                              <NavLink onClick={noAction} to="/"><span className="la la-home"></span>Footage</NavLink> <b>500 sq.ft</b>
                             </li>
+
                             <li>
-                                <NavLink onClick={noAction} to="/at_demo"><span className="la la-heartbeat"></span>Health Care</NavLink>
+                              <NavLink onClick={noAction} to="/"><span className="la la-bed"></span>Bedroom</NavLink> <b>1</b>
                             </li>
+
                             <li>
-                                <NavLink onClick={noAction} to="/at_demo"><span className="la la-laptop"></span>Technology</NavLink>
+                              <NavLink onClick={noAction} to="/"><span className="la la-calendar-check-o"></span>Bath</NavLink> <b>1</b>
                             </li>
+
                             <li>
-                                <NavLink onClick={noAction} to="/at_demo"><span className="la la-eject"></span>Conference</NavLink>
-                                <span className="cat-trigger"></span>
-                                <ul className="atbdp_child_category">
-                                    <li><NavLink to="/at_demo">Event</NavLink></li>
-                                    <li><NavLink to="/at_demo">Meeting</NavLink></li>
-                                    <li><NavLink to="/at_demo">Sports</NavLink></li>
-                                    <li><NavLink to="/at_demo">Business</NavLink></li>
-                                </ul>
+                                <NavLink onClick={noAction} to="/"><span className="la la-lightbulb-o"></span>Electricity</NavLink> <b>Included</b>
                             </li>
+
                             <li>
-                                <NavLink to="/at_demo"><span className="la la-leaf" onClick={noAction}></span>Agriculture</NavLink>
+                                <NavLink onClick={noAction} to="/"><span className="la la-tint"></span>Water</NavLink> <b>Included</b>
                             </li>
+
                             <li>
-                                <NavLink to="/at_demo"><span className="la la-calculator" onClick={noAction}></span>Food and Fitness</NavLink>
+                                <NavLink onClick={noAction} to="/"><span className="la la-cog"></span>Air Conditioner</NavLink> <b>Included</b>
+                            </li>
+
+                            <li>
+                                <NavLink onClick={noAction} to="/"><span className="la la-car"></span>Parking</NavLink> <b>Included</b>
+                            </li>
+
+                            <li>
+                                <NavLink onClick={noAction} to="/"><span className="la la-wifi"></span>Wifi</NavLink> <b>Included</b>
                             </li>
                         </ul>
                     </div>{/*<!-- ends: .atbdp -->*/}

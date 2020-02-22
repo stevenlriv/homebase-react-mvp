@@ -19,31 +19,75 @@ export const verifyAuth = () => dispatch => {
 
     }
 
-    /////////////////////////////////////////////////////////////
-    //We update add the user documents to redux
-    // Get the user document
-    let userRef = db.collection("users").doc(user.uid);
-    userRef.get()
-      .then(doc => {
-        if (doc.exists) {
-          //console.log('Document data:', doc.data());
-          // Data from Firestore user auth
-          let userAuth = {
-            userId: user.uid,
-            email: user.email,
-            joined: user.metadata.creationTime,
-          };
+      /////////////////////////////////////////////////////////////
+      //We update add the user documents to redux
+      // Get the user document
+      let userRef = db.collection("users").doc(user.uid);
+      userRef.get()
+        .then(doc => {
+          if (doc.exists) {
+            // Data from Firestore user auth
+            let userAuth = {
+              userId: user.uid,
+              email: user.email,
+              joined: user.metadata.creationTime,
+            };
 
-          let userData = doc.data();
-          dispatch({
-              type: actionTypes.VERIFY_SUCCESS,
-              user: {userAuth: userAuth, userData: userData}
-          });
-        }
-    })
-    .catch(err => {
-    });
-    ////////////////////////////////////////////////
+            let userData = doc.data();
+            dispatch({
+                type: actionTypes.VERIFY_SUCCESS,
+                user: {userAuth: userAuth, userData: userData}
+            });
+
+
+            /////////////////////////////////////////////////////////////
+            //Lets get the user listing
+            //First lest get the lease data
+            if( userData.leaseId ) {
+              let leaseRef = db.collection("lease").doc(userData.leaseId);
+              leaseRef.get()
+                .then(doc => {
+                  if (doc.exists) {
+                    dispatch({
+                      type: actionTypes.VERIFY_USER_LEASE,
+                      leaseData: doc.data()
+                    });
+
+                    //Know that the lease exists, we can just get the listings
+                    const listingId = doc.data().listingId;
+
+                    //Then lets get the user homebase
+                    let listingRef = db.collection("listings").doc(listingId);
+                    listingRef.get()
+                      .then(doc => {
+                        if (doc.exists) {
+                          dispatch({
+                            type: actionTypes.VERIFY_USER_HOMEBASE,
+                            userHomebase: doc.data()
+                          });
+                        }
+                    })
+                    .catch(err => {
+                    });
+                    ////////////////////////////////////////////////
+
+                  }
+              })
+              .catch(err => {
+              });
+            }
+            ////////////////////////////////////////
+            // ends lease
+            ////////////////
+            
+
+          }
+        })
+        .catch(err => {
+        });
+        ////////////////////////////////////////////////
+
+
 
   });
 };

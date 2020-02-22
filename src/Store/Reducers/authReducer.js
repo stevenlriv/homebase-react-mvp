@@ -7,7 +7,9 @@ const initState = {
   loginError: false,
   logoutError: false,
   isAuthenticated: false,
-  user: {}
+  user: {},
+  userHomebase: {},
+  leaseData: {}
 };
 
 const authReducer = (state = initState, action) => {
@@ -63,6 +65,16 @@ const authReducer = (state = initState, action) => {
         isVerifying: false,
         user: action.user
       };
+      case actionTypes.VERIFY_USER_HOMEBASE:
+        return {
+          ...state,
+          userHomebase: action.userHomebase
+        };
+        case actionTypes.VERIFY_USER_LEASE:
+          return {
+            ...state,
+            leaseData: action.leaseData
+          };
     default:
       return state;
   }
