@@ -19,7 +19,7 @@ import firebaseReducer from './firebaseReducer';
 const rootReducer = combineReducers({
     category: catReducer,
     list: listReducer,
-    listings: listingsReducer,
+    theListings: listingsReducer,
     homeListings: homelistingsReducer,
     place: placeReducer,
     testimonial: testiReducer,

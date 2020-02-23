@@ -10,8 +10,15 @@ export const listingsReducer = (state = initStateListings, action) => {
         ...state,
         isLoggingIn: false,
         isAuthenticated: true,
-        allListings: action.listings
+        listing: action.listings
       };
+      case actionTypes.ADD_ALL_LISTING:
+        return {
+          ...state,
+          isLoggingIn: false,
+          isAuthenticated: true,
+          allListings: action.allListings
+        };
     default:
       return state;
   }

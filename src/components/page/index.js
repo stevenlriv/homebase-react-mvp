@@ -16,6 +16,7 @@ class Index extends Component {
         };
 
         const light = this.props.logo[0].light;
+
         return (
             <Fragment>
 
@@ -82,7 +83,8 @@ const mapStateToProps = state => {
     return {
       isAuthenticated: state.userAuth.isAuthenticated,
       list: state.list,
-      logo: state.logo
+      logo: state.logo,
+      allListings: state.theListings.allListings
     };
 };
 

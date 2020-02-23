@@ -31,7 +31,7 @@ export class BreadcrumbWraper extends Component {
 export class BreadcrumbSingle extends Component {
 
     render() {
-        const { category, rating, badge, title, price} = this.props.filter[0];
+        const { citiesCategory, listingTitle, monthlyRentFullHouse, physicalAddress } = this.props.currentListing;
         return (
             <Fragment>
                 <div className="col-lg-8 col-md-7">
@@ -42,7 +42,7 @@ export class BreadcrumbSingle extends Component {
                     <ul className="list-unstyled listing-info--meta">
                         <li>{/**/}
                             <span className="atbd_meta atbd_listing_average_pricing" data-toggle="tooltip" data-placement="top" title="" data-original-title="Monthly Rent">
-                                $1200
+                                ${monthlyRentFullHouse}
                             </span>
                         </li>
                         {/*
@@ -58,8 +58,8 @@ export class BreadcrumbSingle extends Component {
                             </div>
                         </li>*/}
                     </ul>{/*<!-- ends: .listing-info-meta -->*/}
-                    <h1>Oasis House</h1>
-                    <p className="subtitle">San Juan</p>
+                    <h1>{listingTitle}</h1>
+                    <p className="subtitle">{citiesCategory}, {physicalAddress}</p>
                 </div>
 
                 {/*

@@ -4,12 +4,8 @@ import { Footer } from '../layout/footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import ListingList from '../container/all-listing-list';
 import { connect } from 'react-redux';
-import { getListings } from '../../Store/action/getListingsActions';
 
 const AllListingGrid = (props) => {
-
-    //Get listings from firebase
-    props.dispatch(getListings('San Juan'));
 
     const light = props.logo[0].light;
     return (

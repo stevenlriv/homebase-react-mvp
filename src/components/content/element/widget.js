@@ -115,6 +115,7 @@ export class BusinessInfo extends Component {
 
 export class CategoryWithIcon extends Component {
     render() {
+        const currentListing = this.props.currentListing;
         return (
             <Fragment>
 
@@ -124,37 +125,85 @@ export class CategoryWithIcon extends Component {
                     </div>{/*<!-- ends: /.atbd_widget_title -->*/}
                     <div className="widget-body atbdp-widget-categories">
                         <ul className="atbdp_parent_category">
+
+                        {
+                            currentListing.squareFeet ? (
+                              <li>
+                                <NavLink onClick={noAction} to="/"><span className="la la-home"></span>Footage</NavLink> <b>{currentListing.squareFeet}</b>
+                              </li>
+                            ) : (
+                              <span></span>
+                            )
+                        }
+
                             <li>
-                              <NavLink onClick={noAction} to="/"><span className="la la-home"></span>Footage</NavLink> <b>500 sq.ft</b>
+                              <NavLink onClick={noAction} to="/"><span className="la la-bed"></span>Bedroom</NavLink> <b>{currentListing.numberBedrooms}</b>
                             </li>
 
                             <li>
-                              <NavLink onClick={noAction} to="/"><span className="la la-bed"></span>Bedroom</NavLink> <b>1</b>
+                              <NavLink onClick={noAction} to="/"><span className="la la-calendar-check-o"></span>Bath</NavLink> <b>{currentListing.numberBathrooms}</b>
                             </li>
 
-                            <li>
-                              <NavLink onClick={noAction} to="/"><span className="la la-calendar-check-o"></span>Bath</NavLink> <b>1</b>
-                            </li>
+                            {
+                                currentListing.electricity ? (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-lightbulb-o"></span>Electricity</NavLink> <b>Included</b>
+                                  </li>
+                                ) : (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-lightbulb-o"></span>Electricity</NavLink> <b>Not Included</b>
+                                  </li>
+                                )
+                            }
 
-                            <li>
-                                <NavLink onClick={noAction} to="/"><span className="la la-lightbulb-o"></span>Electricity</NavLink> <b>Included</b>
-                            </li>
+                            {
+                                currentListing.water ? (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-tint"></span>Water</NavLink> <b>Included</b>
+                                  </li>
+                                ) : (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-tint"></span>Water</NavLink> <b>Not Included</b>
+                                  </li>
+                                )
+                            }
 
-                            <li>
-                                <NavLink onClick={noAction} to="/"><span className="la la-tint"></span>Water</NavLink> <b>Included</b>
-                            </li>
+                            {
+                                currentListing.airConditioning ? (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-cog"></span>Air Conditioner</NavLink> <b>Available</b>
+                                  </li>
+                                ) : (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-cog"></span>Air Conditioner</NavLink> <b>Not available</b>
+                                  </li>
+                                )
+                            }
 
-                            <li>
-                                <NavLink onClick={noAction} to="/"><span className="la la-cog"></span>Air Conditioner</NavLink> <b>Included</b>
-                            </li>
+                            {
+                                currentListing.parking ? (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-car"></span>Parking</NavLink> <b>Available</b>
+                                  </li>
+                                ) : (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-car"></span>Parking</NavLink> <b>Not Available</b>
+                                  </li>
+                                )
+                            }
 
-                            <li>
-                                <NavLink onClick={noAction} to="/"><span className="la la-car"></span>Parking</NavLink> <b>Included</b>
-                            </li>
+                            {
+                                currentListing.wifi ? (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-wifi"></span>Wifi</NavLink> <b>Included</b>
+                                  </li>
+                                ) : (
+                                  <li>
+                                      <NavLink onClick={noAction} to="/"><span className="la la-wifi"></span>Wifi</NavLink> <b>Not Included</b>
+                                  </li>
+                                )
+                            }
 
-                            <li>
-                                <NavLink onClick={noAction} to="/"><span className="la la-wifi"></span>Wifi</NavLink> <b>Included</b>
-                            </li>
                         </ul>
                     </div>{/*<!-- ends: .atbdp -->*/}
                 </div>{/*<!-- ends: .widget -->                */}

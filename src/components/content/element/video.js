@@ -4,19 +4,19 @@ export class Video extends Component {
 
     render() {
         return (
-            <Fragment>               
+            <Fragment>
                 <div className="atbdb_content_module_contents">
                     <div className="video-wrapper">
                         <figure>
-                            <img src="./assets/img/video.jpg" alt="" />
+                            <img src={this.props.currentListing.imgMain} alt="" />
                             <figcaption>
-                                <a href="https://www.youtube.com/watch?v=0C4fX_x_Vsg" className="video-iframe play-btn">
+                                <a href={this.props.currentListing.videoTour} className="video-iframe play-btn">
                                     <span className="la la-youtube-play"></span>
                                 </a>
                             </figcaption>
                         </figure>
                     </div>
-                </div>                
+                </div>
             </Fragment>
         )
     }
@@ -25,7 +25,7 @@ export class Video extends Component {
 export class Video2 extends Component {
     render() {
         return (
-            <Fragment>               
+            <Fragment>
                  <div className="widget atbd_widget widget-card">
                     <div className="atbd_widget_title">
                         <h4><span className="la la-youtube"></span> Sidebar Video</h4>

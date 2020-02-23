@@ -54,10 +54,12 @@ function App(props) {
           {/* Cities Router */}
           <Route path = '/cities/san-juan' component = { AllListingList } />
           <Route path = '/san-juan/:id' component = { ListingDetails } />
-          
+
           <Route path = '/cities/san-francisco' component = { CitiesNotAvailable } />
           <Route path = '/cities/santiago' component = { CitiesNotAvailable } />
 
+          <Route path = '/cities' component = { Category } />
+          
           {/* Only Access to a log-in user */}
           <ProtectedRoute
             exact

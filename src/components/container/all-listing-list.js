@@ -173,12 +173,7 @@ class ListingList extends Component {
 
                                     <div className="col-lg-12">
                                         <div className="row">
-                                        {
-                                            Object.values(this.state.list).length ? (
-                                                <ListingCardGrid12 list={this.state.list} />
-                                            ) : (<div className="col-lg-12"><div className="alert alert-warning" role="alert">Data Not found!</div></div>)
-                                        }
-
+                                                <ListingCardGrid12 />
                                         </div>
                                     </div>
 
@@ -194,7 +189,8 @@ class ListingList extends Component {
 const mapStateToProps =  (state) => {
     return {
         list : state.list,
-        listings: state.listings
+        listings: state.listings,
+        allListings: state.theListings.allListings
     }
 }
 export default connect(mapStateToProps)(ListingList);
